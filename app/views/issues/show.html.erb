@@ -13,16 +13,9 @@
           <p>
             <%= @issue.detailed_description.gsub("\n","<br/>")%>
           </p>
-          <%if @issue.status =="closed"%>
-            <p>
-              <b>Status:</b>
-              <%=h @issue.status %>
-            </p>
-          <%end%>
         </div>
         <div id="comments">
           <% if !@posts.nil? %>
-            <% logger.info"======>>>>>>#{@posts.inspect}" %>
             <div class="comment">
               <h2 class="title">
                 <table>

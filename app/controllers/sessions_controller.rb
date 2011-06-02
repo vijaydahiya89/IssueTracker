@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         current_user.remember_me unless current_user.remember_token?
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end      
-      flash[:notice] = "Logged in successfully"
+      flash[:notice] = "Logged In"
       redirect_back_or_default('/issues/my_issues/'+current_user.id.to_s)
     else
       flash[:notice] = "Invalid login or password !"

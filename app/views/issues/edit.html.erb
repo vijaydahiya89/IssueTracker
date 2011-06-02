@@ -21,7 +21,7 @@
 
   <p>
     Assigned To:
-    <% @users = User.find_all_by_user_id(2422) %>
+    <% @users = User.all %>
     <select name="issue[assigned_to]">
       <% @users.each do |user| %>
         <option value="<%= user.id%>" <% if current_user.login == user.login then %> selected <% end %>><%= user.login %></option>

@@ -6,8 +6,8 @@
    login = User.find_by_id(bug.assigned_to).login %>
   <tr>
     <td width="530"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
-    <td><%=h login %></td>
-    <td><%=h ((Time.now - bug.created_at)/(3600*24)).to_i %> Days</td>
+    <td ><%=h login %></td>
+    <td ><%=h ((Time.now - bug.created_at)/(3600*24)).to_i %> Days</td>
   </tr>
 <%end%>
 

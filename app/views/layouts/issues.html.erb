@@ -18,13 +18,13 @@
         &nbsp; BUGZ
       </div>
       <div id="div_upper_center">
-           <a id="my_issues" href="/issues/my_issues/<%=current_user.id %>">To Do</a> |
-           <a id="all_issues" href="/issues">All Issues</a> |
-           <a id="user_details" href="/issues/user_details/<%=current_user.id %>">User Details</a>
+        <a id="my_issues" href="/issues/my_issues/<%=current_user.id %>">To Do</a> |
+        <a id="all_issues" href="/issues">All Issues</a> |
+        <a id="user_details" href="/issues/user_details/<%=current_user.id %>">User Details</a>
       </div>
       <div id="div_upper_right">
-             <%=current_user.login%> |
-             <a href="/logout">Logout</a>&nbsp;
+        <%=current_user.login%> |
+        <a href="/logout">Logout</a>&nbsp;
       </div>
     </div>
     <div id="container">
@@ -32,20 +32,26 @@
         <div class="col">
           <div class="content">
             <div class="writeboardbody">
-                <%=yield%>
+              <%=yield%>
             </div>
-              <div class="sidebar">
-                <% if controller.action_name == "index" or controller.action_name == "my_issues" %>
+            <div class="sidebar">
+              <% if controller.action_name == "index" or controller.action_name == "my_issues" %>
                 <a id="new_issues" href="/issues/new">New Issue</a>
-                <% elsif controller.action_name == "show" and @issue.status =="open"%>
-                <div id="close_comment">
-                  <div class="div_button">
-                    <a href="/issues/close_issue/<%= @issue.id %>">Close Issue</a>
+              <% elsif controller.action_name == "show" %>
+                <% if @issue.status =="open" %>
+                  <div id="close_comment">
+                    <div class="div_button">
+                      <a href="/issues/close_issue/<%= @issue.id %>">Close Issue</a>
+                    </div>
                   </div>
-                </div>
-                <%end%>
-                <br/><div id="flash_notice"><a><%=h flash[:notice] %></a></div>
-              </div>
+                <% else %>
+                    <div id="close_comment">
+                      <label>Closed</label>
+                  </div>
+                <% end %>
+              <%end%>
+              <br/><div id="flash_notice"><a><%=h flash[:notice] %></a></div>
+            </div>
           </div>
         </div>
         <div class="bottom_strip">&nbsp;</div>
@@ -53,7 +59,5 @@
       </div>
     </div>
 
-
-    
   </body>
 </html>

@@ -288,3 +288,20 @@ hr{
     margin: 1px 0px 0px 0px;
     padding: 2px 2px 2px 40px;
 }
+.detailed_desciption img
+{
+    border: 2px solid #eeeeee;
+}
+
+.comment h2 .title img
+{
+    border: 2px solid #eeeeee;
+}
+
+#close_comment label
+{
+    margin-left: 40px;
+    font-family: "Lucida Grande", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}

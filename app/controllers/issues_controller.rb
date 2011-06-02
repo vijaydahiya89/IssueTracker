@@ -50,7 +50,7 @@ class IssuesController < ApplicationController
   end
 
   def user_details
-    @users = User.find_all_by_user_id(2422)
+    @users = User.all
   end
 
   def user_issues
