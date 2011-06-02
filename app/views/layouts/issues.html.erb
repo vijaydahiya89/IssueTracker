@@ -20,10 +20,10 @@
       <div id="div_upper_center">
         <a id="my_issues" href="/issues/my_issues/<%=current_user.id %>">To Do</a> |
         <a id="all_issues" href="/issues">All Issues</a> |
-        <a id="user_details" href="/issues/user_details/<%=current_user.id %>">User Details</a>
+        <a id="user_issues" href="/issues/user_issues/<%=current_user.id %>">User Issues</a>
       </div>
       <div id="div_upper_right">
-        <%=current_user.login%> |
+        <a id="current_user" href="/issues/edit_user_details/<%=h current_user.id %>"><%=current_user.login%></a> |
         <a href="/logout">Logout</a>&nbsp;
       </div>
     </div>
@@ -35,7 +35,7 @@
               <%=yield%>
             </div>
             <div class="sidebar">
-              <% if controller.action_name == "index" or controller.action_name == "my_issues" %>
+              <% if controller.action_name == "index" or controller.action_name == "my_issues" or controller.action_name == "user_issues" %>
                 <a id="new_issues" href="/issues/new">New Issue</a>
               <% elsif controller.action_name == "show" %>
                 <% if @issue.status =="open" %>
