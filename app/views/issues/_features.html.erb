@@ -1,0 +1,21 @@
+<table width="735">
+<% @open_features.each do |feature|
+   login = User.find_by_id(feature.assigned_to).login %>
+  <tr>
+    <td width="585"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+     <td width="50">      </td>
+    <td width="50"><%=h login %></td>
+    <td width="50"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
+  </tr>
+<%end%>
+
+<% @closed_features.each do |feature|
+   login = User.find_by_id(feature.assigned_to).login %>
+  <tr>
+    <td width="585"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+    <td width="50"><%=h feature.status %></td>
+    <td width="50"><%=h login %></td>
+    <td width="50"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
+  </tr>
+<%end%>
+</table>
