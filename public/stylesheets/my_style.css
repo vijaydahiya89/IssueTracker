@@ -38,7 +38,7 @@ body {
     position: absolute;
     top: 6px;
     left: 0px;
-    font-size: 16px;
+    font-size: 19px;
     text-transform: uppercase;
     color: orange;
 }
@@ -305,3 +305,24 @@ hr{
     font-size: 24px;
     font-weight: bold;
 }
+
+td
+{
+/*    border: 2px solid black;*/
+    border-bottom:  1px dotted #eeeeee;
+    color: grey;
+}
+table a
+{
+    color: black;
+    text-decoration: none;
+}
+
+table a:hover
+{
+    color:blue;
+}
+table{
+    font-size: 12px;
+}
+

@@ -1,49 +1,46 @@
 <%= stylesheet_link_tag 'my_issues' %>
 
 <h3>Bugs</h3>
-<table width="100%">
+<table width="735">
 <% @open_bugs.each do |bug|
    login = User.find_by_id(bug.assigned_to).login %>
   <tr>
-    <td width="530"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
-    <td><%=h login %></td>
-    <td><%=h ((Time.now - bug.created_at)/(3600*24)).to_i %> Days</td>
+    <td width="555"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
+     <td width="60"></td>
+    <td width="60"><%=h ((Time.now - bug.created_at)/(3600*24)).to_i %> Days</td>
   </tr>
 <%end%>
 
 <% @closed_bugs.each do |bug|
    login = User.find_by_id(bug.assigned_to).login %>
   <tr>
-    <td width="530"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
-    <td><%=h bug.status %></td>
-    <td><%=h login %></td>
-    <td><%=h ((Time.now - bug.created_at)/(3600*24)).to_i %> Days</td>
+    <td width="555"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
+    <td width="60"><%=h bug.status %></td>
+    <td width="60"><%=h ((Time.now - bug.created_at)/(3600*24)).to_i %> Days</td>
   </tr>
 <%end%>
 </table>
-
-<hr/>
-
+<br/>
 <h3>Features</h3>
-<table width="100%">
+<table width="735">
 <% @open_features.each do |feature|
    login = User.find_by_id(feature.assigned_to).login %>
   <tr>
-    <td width="530"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
-    <td><%=h login %></td>
-    <td><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
+    <td width="555"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+     <td width="60"></td>
+    <td width="60"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
   </tr>
 <%end%>
 
 <% @closed_features.each do |feature|
    login = User.find_by_id(feature.assigned_to).login %>
   <tr>
-    <td width="530"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
-    <td><%=h feature.status %></td>
-    <td><%=h login %></td>
-    <td><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
+    <td width="555"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+    <td width="60"><%=h feature.status %></td>
+    <td width="60"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
   </tr>
 <%end%>
 
 </table>
+
 

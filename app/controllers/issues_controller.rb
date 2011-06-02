@@ -49,16 +49,8 @@ class IssuesController < ApplicationController
     @closed_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Feature","closed",:order => "id DESC")
   end
 
-  def user_details
-    @users = User.all
-  end
-
   def user_issues
-    @open_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(params[:id],"Bug","open",:order => "id DESC")
-    @closed_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(params[:id],"Bug","closed",:order => "id DESC")
-    @open_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(params[:id],"Feature","open",:order => "id DESC")
-    @closed_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(params[:id],"Feature","closed",:order => "id DESC")
-    @user = User.find_by_id(params[:id])
+    @users = User.all(:order => 'login')
   end
 
   def close_issue
@@ -69,7 +61,7 @@ class IssuesController < ApplicationController
   end
 
   def edit_user_details
-    @user = User.find_by_id(params[:id])
+    
   end
 
   def update_user_details

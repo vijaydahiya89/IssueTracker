@@ -1,14 +1,16 @@
-<h3>Edit Details for <%= @user.login %></h3>
+<%= stylesheet_link_tag 'current_user' %>
+
+<h3>Edit Details for <%= current_user.login %></h3>
 <form action="/issues/update_user_details/<%= current_user.id %>" method="post" enctype="multipart/form-data">
-Id: <%= @user.id %>
+Id: <%= current_user.id %>
 <br/><br/>
-Name:<input type="text" value="<%= @user.login %>" name="user[login]"/>
+Name:<input type="text" value="<%= current_user.login %>" name="user[login]"/>
 <br/><br/>
-Email:<input type="text" value="<%= @user.email %>" name="user[email]"/>
+Email:<input type="text" value="<%= current_user.email %>" name="user[email]"/>
 <br/><br/>
 Profile Picture:<br/>
-<% if !@user.profile_file_size.nil? %>
-<%= image_tag @user.profile.url(:thumb) %>
+<% if !current_user.profile_file_size.nil? %>
+<%= image_tag current_user.profile.url(:thumb) %>
 <br/><br/>
 <% end %>
 <input type="file" name="user[profile]"/>
