@@ -1,6 +1,8 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
   has_attached_file :profile, :styles => { :thumb => "32x32" }
+   has_many  :issues
+   belongs_to :post
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
@@ -18,8 +20,7 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   # attr_accessible :login, :email, :password, :password_confirmation, :reset_code
   
-  has_many  :issues
-  belongs_to :post
+ 
 
   # Activates the user in the database.
   def activate

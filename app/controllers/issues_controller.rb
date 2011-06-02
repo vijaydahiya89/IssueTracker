@@ -67,7 +67,8 @@ class IssuesController < ApplicationController
   def update_user_details
     @user = User.find_by_id(current_user.id)
     @user.update_attributes(params[:user])
-    redirect_to("/issues/user_details/"+ current_user.id.to_s)
+    flash[:notice]= "Details Updated"
+    redirect_to("/issues/edit_user_details/"+ current_user.id.to_s)
   end
 
 end

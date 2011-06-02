@@ -8,44 +8,8 @@
 %>
 
   <h3><%=h user.login %></h3>
- <table width="100%">
-    <% @open_bugs.each do |bug| %>
-      <tr>
-        <td width="80%" id="short_description"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
-        <td width="10%"></td>
-        <td width="10%"><%=h ((Time.now - bug.created_at)/(3600*24)).to_i %> Days</td>
-      </tr>
-    <%end%>
-
-    <% @closed_bugs.each do |bug| %>
-      <tr>
-        <td width="80%"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
-        <td width="10%"><%=h bug.status %></td>
-        <td width="10%"><%=h ((Time.now - bug.created_at)/(3600*24)).to_i %> Days</td>
-      </tr>
-    <%end%>
-  </table>
-  <br/>
-  
-  <table width="100%">
-    <% @open_features.each do |feature| %>
-      <tr>
-        <td width="80%"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
-        <td width="10%"></td>
-        <td width="10%"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
-      </tr>
-    <%end%>
-
-    <% @closed_features.each do |feature| %>
-      <tr>
-        <td width="80%"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
-        <td width="10%"><%=h feature.status %></td>
-        <td width="10%"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
-      </tr>
-    <%end%>
-
-  </table>
-  
+  <%= render :partial => "bugs"%>
+ <%= render :partial => "features"%>
 <% end %>
 
 

@@ -1,5 +1,4 @@
 <%= stylesheet_link_tag 'current_user' %>
-
 <h3>Edit Details for <%= current_user.login %></h3>
 <form action="/issues/update_user_details/<%= current_user.id %>" method="post" enctype="multipart/form-data">
 Id: <%= current_user.id %>
