@@ -31,7 +31,6 @@ body {
     text-transform: uppercase;
     color: orange;
     width:240px;
-    margin-right: 230px;
 }
 #header #div_upper_left
 {
@@ -42,11 +41,10 @@ body {
     font-size: 16px;
     text-transform: uppercase;
     color: orange;
-    margin-left: 203px;
 }
 #header #div_upper_center
 {
-    margin-left: 530px;
+    text-align: center;
 }
 
 
@@ -104,13 +102,13 @@ FOR PROPORTIONAL WIDTH
 }
 
 .left .col {
-	padding: 1px 0 0 0;
+	padding: 0px 0 0 0;
 /*  background: #fff url("../images/right-bg.gif") right repeat-y;*/
 }
 
 
 .left .col .content {
-  padding: 0px 10px 0px 10px;
+  padding: 0px 0px 0px 0px;
   overflow: hidden;
 }
 
@@ -119,7 +117,7 @@ FOR PROPORTIONAL WIDTH
   background: url(../images/bottom-bg.gif) top right no-repeat;
   width:770px;
   font-size: 8px;
-  margin-left: 10px;
+  margin-left: 0px;
 }
 
 
@@ -143,19 +141,16 @@ WRITEBOARD TITLE
 {
     overflow: hidden;
 }
-.div_button
-{
-   
-}
+
 .div_button a
 {
-    text-decoration: none;
+  text-decoration: none;
   -moz-border-radius:5px 5px 5px 5px;
   background-color:gray;
   border:1px solid gray;
   color:#FFFFFF;
   padding: 10px 31px 10px 31px ;
-  margin: 0px 20px 0px 20px;
+  margin: 0px 20px 0px 26px;
   text-align:center;
 }
 /*-------------------------------------------------
@@ -236,7 +231,7 @@ SIDEBAR
   border:1px solid gray;
   color:#FFFFFF;
   padding: 10px 32px 10px 32px;
-  margin: 0px 20px 0px 20px;
+  margin: 0px 20px 0px 26px;
   text-align: center;
 
 /*  text-align:center;*/
@@ -291,10 +286,5 @@ hr{
 .sidebar #flash_notice a
 {
     margin: 1px 0px 0px 0px;
-    padding: 2px 2px 2px 30px;
-}
-
-.detailed_desciption img
-{
-    border: 2px solid #eeeeee;
+    padding: 2px 2px 2px 40px;
 }

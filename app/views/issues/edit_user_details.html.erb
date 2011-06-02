@@ -1,11 +1,6 @@
-<div id="flash_notice">
-<%= flash[:notice] %>
-</div>
-<br/>
-<h3>Edit Details for: <%= @user.login %></h3>
-<br/>
+<h3>Edit Details for <%= @user.login %></h3>
 <form action="/issues/update_user_details/<%= current_user.id %>" method="post" enctype="multipart/form-data">
-User Id: <%= @user.id %>
+Id: <%= @user.id %>
 <br/><br/>
 Name:<input type="text" value="<%= @user.login %>" name="user[login]"/>
 <br/><br/>

@@ -2,8 +2,10 @@ class IssuesController < ApplicationController
   before_filter :login_required
 
   def index
-    @bugs = Issue.find_all_by_issue_type("Bug", :order => "id DESC")#.group_by &:status
-    @features = Issue.find_all_by_issue_type("Feature",:order => "id DESC")#.group_by &:status
+    @open_bugs = Issue.find_all_by_issue_type_and_status("Bug","open",:order => "id DESC")
+    @closed_bugs = Issue.find_all_by_issue_type_and_status("Bug","closed",:order => "id DESC")
+    @open_features = Issue.find_all_by_issue_type_and_status("Feature","open",:order => "id DESC")
+    @closed_features = Issue.find_all_by_issue_type_and_status("Feature","closed",:order => "id DESC")
   end
 
   def show
@@ -22,19 +24,15 @@ class IssuesController < ApplicationController
 
   def create
     @issue = current_user.issues.create(params[:issue])
-    @issue.assigned_to = params[:assign_to]
     @issue.status = "open"
-    @issue.issue_type = params[:type]
     @issue.save
-    flash[:notice] = "New Issue Added"
+    flash[:notice] = "Issue Added"
     redirect_to("/issues")
   end
 
   def update
     @issue = Issue.find(params[:id])
     @issue.update_attributes(params[:issue])
-    @issue.update_attribute(:status,params[:status])
-    @issue.update_attribute(:assigned_to,params[:assign_to])
     redirect_to("/issues")
   end
 
@@ -45,17 +43,21 @@ class IssuesController < ApplicationController
   end
 
   def my_issues
-    @bugs = Issue.find_all_by_issue_type_and_assigned_to("Bug",current_user.id,:order => "id DESC")#.group_by &:status
-    @features = Issue.find_all_by_issue_type_and_assigned_to("Feature",current_user.id,:order => "id DESC")#.group_by &:status
+    @open_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Bug","open",:order => "id DESC")
+    @closed_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Bug","closed",:order => "id DESC")
+    @open_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Feature","open",:order => "id DESC")
+    @closed_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Feature","closed",:order => "id DESC")
   end
 
   def user_details
-    @users = User.all
+    @users = User.find_all_by_user_id(2422)
   end
 
   def user_issues
-    @bugs = Issue.find_all_by_issue_type_and_assigned_to("Bug",params[:id],:order => "id DESC")#.group_by &:status
-    @features = Issue.find_all_by_issue_type_and_assigned_to("Feature",params[:id],:order => "id DESC")#.group_by &:status
+    @open_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(params[:id],"Bug","open",:order => "id DESC")
+    @closed_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(params[:id],"Bug","closed",:order => "id DESC")
+    @open_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(params[:id],"Feature","open",:order => "id DESC")
+    @closed_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(params[:id],"Feature","closed",:order => "id DESC")
     @user = User.find_by_id(params[:id])
   end
 
@@ -73,13 +75,6 @@ class IssuesController < ApplicationController
   def update_user_details
     @user = User.find_by_id(current_user.id)
     @user.update_attributes(params[:user])
-    flash[:notice] = "User Details Updated"
-    redirect_to("/issues/edit_user_details/"+ current_user.id.to_s)
-  end
-
-  def destroy_user
-    @user = User.find_by_id(params[:id])
-    @user.destroy
     redirect_to("/issues/user_details/"+ current_user.id.to_s)
   end
 

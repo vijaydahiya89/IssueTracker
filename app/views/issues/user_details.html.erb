@@ -1,9 +1,9 @@
 <%= stylesheet_link_tag 'user_details' %>
-<h3>All Users</h3>
+<h3>Users</h3>
 <table width="70%">
   <tr>
-    <th>ID</th>
-    <th>Login</th>
+    <th>Id</th>
+    <th>Name</th>
     <th>Email</th>
   </tr>
 <% @users.each do |user| %>
@@ -13,7 +13,6 @@
     <td><%=h user.email %></td>
     <%if user.login == current_user.login%>
     <td><a href="/issues/edit_user_details/<%= user.id%>">Edit</a></td>
-    <td><div id="flash_notice"><%= flash[:notice] %></div></td>
     <%end%>
   </tr>
 <% end %>

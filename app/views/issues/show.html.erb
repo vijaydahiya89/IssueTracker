@@ -2,8 +2,7 @@
           <h3><%=h @issue.short_description %></h3>
           <br/><br/>
           <% if @user.login != current_user.login %>
-              Assigned to:
-              <%=h @user.login%>
+              Assigned to <%=h @user.login%>
           <% end %>
         </div>
         <hr/>
@@ -23,6 +22,7 @@
         </div>
         <div id="comments">
           <% if !@posts.nil? %>
+            <% logger.info"======>>>>>>#{@posts.inspect}" %>
             <div class="comment">
               <h2 class="title">
                 <table>

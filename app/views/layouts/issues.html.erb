@@ -35,17 +35,16 @@
                 <%=yield%>
             </div>
               <div class="sidebar">
-                <% if controller.action_name!= "show" %>
+                <% if controller.action_name == "index" or controller.action_name == "my_issues" %>
                 <a id="new_issues" href="/issues/new">New Issue</a>
-                <%elsif @issue.status =="open"%>
+                <% elsif controller.action_name == "show" and @issue.status =="open"%>
                 <div id="close_comment">
                   <div class="div_button">
                     <a href="/issues/close_issue/<%= @issue.id %>">Close Issue</a>
                   </div>
                 </div>
                 <%end%>
-                <br/>
-                <div id="flash_notice"><a><%= flash[:notice] %></a></div>
+                <br/><div id="flash_notice"><a><%=h flash[:notice] %></a></div>
               </div>
           </div>
         </div>

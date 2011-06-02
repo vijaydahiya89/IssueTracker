@@ -13,21 +13,29 @@
   </p>
   <p>
     Status:
-    <select name="status">
+    <select name="issue[status]">
       <option value="open" <% if @issue.status == "open" then %> selected  <% end %>>Open</option>
       <option value="closed" <% if @issue.status == "closed" then %> selected <% end %> >Closed</option>
     </select>
   </p>
-  <p>
 
+  <p>
     Assigned To:
-    <% @users = User.all %>
-    <select name="assign_to">
+    <% @users = User.find_all_by_user_id(2422) %>
+    <select name="issue[assigned_to]">
       <% @users.each do |user| %>
         <option value="<%= user.id%>" <% if current_user.login == user.login then %> selected <% end %>><%= user.login %></option>
       <% end %>
     </select>
   </p>
+  <p>
+    Issue Type:
+    <select name="issue[issue_type]">
+      <option value="Bug"<% if @issue.status == "Bug" then %> selected  <% end %>>Bug</option>
+      <option value="Feature"<% if @issue.status == "Feature" then %> selected <% end %>>Feature</option>
+    </select>
+  </p>
+
   <br />
   <%= image_tag @issue.image.url(:thumb) %>
   <br />
@@ -40,7 +48,5 @@
 
 </form>
 
-<a href="/issues/<%= @issue.id%>">Show</a> |
-<a href="/issues/my_issues/<%= current_user.id %>">Home</a> | 
 <a href="/issues/destroy/<%= @issue.id%>">Destroy</a>
 <br/><br/>
