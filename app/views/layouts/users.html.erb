@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Issue Tracker: <%= controller.action_name %></title>
+    <%= stylesheet_link_tag 'my_style' %>
+    <link rel="icon" href="/images/bugz.jpg"/>
+  </head>
+  <body>
+    <div id="header">
+             <div id="div_upper_left">
+              &nbsp; BUGZ
+             </div>
+    </div>
+    <div id="container">
+      <div class="left">
+        <div class="col">
+          <div class="content">
+            <div class="writeboardtitle">
+            </div>
+            <div class="writeboardbody">
+                <%=yield%>
+            </div>
+          </div>
+        </div>
+        <div class="bottom_strip">&nbsp;</div>
+        <div id="footer">Developed using <a href="http://rubyonrails.org" target="blank">Ruby on Rails</a></div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      </div>
+  </body>
+</html>

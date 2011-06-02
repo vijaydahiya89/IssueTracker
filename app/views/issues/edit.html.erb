@@ -1,0 +1,46 @@
+<h3>Editing issue</h3>
+
+<form action="/issues/update/<%=@issue.id%>" class="edit_issue" enctype="multipart/form-data" id="edit_issue_<% @issue.id %>" method="post">
+
+  <p>
+    <label for="issue_short_description">Summary</label><br />
+    <input id="issue_short_description" name="issue[short_description]" size="53" maxlength="60" type="text" value="<%=h @issue.short_description %>" />
+  </p>
+  <p>
+    <label for="issue_detailed_description">Detailed description</label><br />
+    <textarea cols="40" id="issue_detailed_description" name="issue[detailed_description]" rows="20"><%= @issue.detailed_description %></textarea>
+
+  </p>
+  <p>
+    Status:
+    <select name="status">
+      <option value="open" <% if @issue.status == "open" then %> selected  <% end %>>Open</option>
+      <option value="closed" <% if @issue.status == "closed" then %> selected <% end %> >Closed</option>
+    </select>
+  </p>
+  <p>
+
+    Assigned To:
+    <% @users = User.all %>
+    <select name="assign_to">
+      <% @users.each do |user| %>
+        <option value="<%= user.id%>" <% if current_user.login == user.login then %> selected <% end %>><%= user.login %></option>
+      <% end %>
+    </select>
+  </p>
+  <br />
+  <%= image_tag @issue.image.url(:thumb) %>
+  <br />
+  <p>
+    <input id="issue_image" name="issue[image]" size="30" type="file" />
+  </p>
+  <p>
+    <input id="issue_submit" name="commit" type="submit" value="Update" />
+  </p>
+
+</form>
+
+<a href="/issues/<%= @issue.id%>">Show</a> |
+<a href="/issues/my_issues/<%= current_user.id %>">Home</a> | 
+<a href="/issues/destroy/<%= @issue.id%>">Destroy</a>
+<br/><br/>

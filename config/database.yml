@@ -1,0 +1,5 @@
+development:
+  adapter: mysql
+  database: issue_tracker
+  username: root
+  password: vijay

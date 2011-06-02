@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag 'all_issues' %>
+
+<% if @bugs.nil? or @bugs.blank? %>
+<h3>There are no bugs</h3>
+<% else %>
+<h3><%= @user.login%>'s Bugs</h3>
+<table width="100%">
+<% @bugs.each do |bug|
+   login = User.find_by_id(bug.assigned_to).login %>
+  <tr>
+    <td width="530"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
+    <td><%if bug.status == "closed"%><%=h bug.status %><%end%></td>
+    <td><%=h login %></td>
+    <td><%=h ((Time.now - bug.created_at)/(3600*24)).to_i %> Days</td>
+  </tr>
+<%end%>
+</table>
+<% end %>
+<hr/>
+<% if @features.nil? or @features.blank? %>
+<h3>There are no features</h3>
+<% else %>
+<h3><%= @user.login%>'s Features</h3>
+<table width="100%">
+<% @features.each do |feature|
+   login = User.find_by_id(feature.assigned_to).login %>
+  <tr>
+    <td width="530"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+    <td><%if feature.status == "closed"%><%=h feature.status %><%end%></td>
+    <td><%=h login %></td>
+    <td><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
+  </tr>
+<%end%>
+</table>
+<% end %>
+

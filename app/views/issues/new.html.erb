@@ -1,0 +1,40 @@
+
+<h3>New issue</h3>
+
+<form action="/issues/create" class="new_issue" enctype="multipart/form-data" id="new_issue" method="post">
+
+  <p>
+    <label for="issue_short_description">Summary</label><br />
+    <input id="issue_short_description" name="issue[short_description]" size="53" maxlength="60" type="text" />
+  </p>
+  <p>
+    <label for="issue_detailed_description">Detailed description</label><br />
+    <textarea cols="40" id="issue_detailed_description" name="issue[detailed_description]" rows="20"></textarea>
+
+  </p>
+  <p>
+    Assigned To:
+    <% @users = User.all %>
+    <select name="assign_to">
+      <% @users.each do |user| %>
+        <option value="<%= user.id%>"><%= user.login %></option>
+      <% end %>
+    </select>
+  </p>
+  <p>
+    Issue Type:
+    <select name="type">
+      <option value="Bug"<% if @issue.status == "Bug" then %> selected  <% end %>>Bug</option>
+      <option value="Feature"<% if @issue.status == "Feature" then %> selected <% end %>>Feature</option>
+    </select>
+  </p>
+  <p>
+    <input id="issue_image" name="issue[image]" size="30" type="file" />
+  </p>
+  <p>
+    <input id="issue_submit" name="commit" type="submit" value="Create" />
+  </p>
+</form>
+
+<a href="/issues/my_issues/<%= current_user.id %>">Home</a>
+<br/><br/>

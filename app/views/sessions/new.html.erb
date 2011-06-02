@@ -1,0 +1,17 @@
+<form action="/session" method="post">
+  <label for="login">Login</label><br/>
+  <input id="login" name="login" type="text" />
+  <p><label for="password">Password</label><br/>
+    <input id="password" name="password" type="password" /></p><br/>
+  <input id="button_login" name="commit" type="submit" value="Log in" />
+  <div id="signup">
+    <a href="/signup">Sign Up</a>
+  </div>
+  <div id="forgot">
+    <a href="/forgot">Forgot Password?</a>
+  </div>
+</form>
+<br/><br/>
+<div id="flash_notice">
+<%= flash[:notice] %>
+</div>

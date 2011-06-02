@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Issue Tracker: <%= controller.action_name %></title>
+    <%= stylesheet_link_tag 'my_style' %>
+    <%= javascript_include_tag :all %>
+    <link rel="icon" href="/images/bugz.jpg"/>
+    <script type="text/javascript">
+      setTimeout("new Effect.Fade('flash_notice');",5000)
+    </script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="div_upper_left">
+        &nbsp; BUGZ
+      </div>
+      <div id="div_upper_center">
+           <a id="my_issues" href="/issues/my_issues/<%=current_user.id %>">To Do</a> |
+           <a id="all_issues" href="/issues">All Issues</a> |
+           <a id="user_details" href="/issues/user_details/<%=current_user.id %>">User Details</a>
+      </div>
+      <div id="div_upper_right">
+             <%=current_user.login%> |
+             <a href="/logout">Logout</a>&nbsp;
+      </div>
+    </div>
+    <div id="container">
+      <div class="left">
+        <div class="col">
+          <div class="content">
+            <div class="writeboardbody">
+                <%=yield%>
+            </div>
+              <div class="sidebar">
+                <% if controller.action_name!= "show" %>
+                <a id="new_issues" href="/issues/new">New Issue</a>
+                <%elsif @issue.status =="open"%>
+                <div id="close_comment">
+                  <div class="div_button">
+                    <a href="/issues/close_issue/<%= @issue.id %>">Close Issue</a>
+                  </div>
+                </div>
+                <%end%>
+                <br/>
+                <div id="flash_notice"><a><%= flash[:notice] %></a></div>
+              </div>
+          </div>
+        </div>
+        <div class="bottom_strip">&nbsp;</div>
+        <div id="footer"></div>
+      </div>
+    </div>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<form action="/reset/<%= @user.reset_code %>" method="post">
+  <p>
+    Pick a new password for <span><%= @user.email %></span>
+  </p>
+
+  <p>
+    <label for="password">Password</label><br />
+    <input id="user_password" name="user[password]" size="30" type="password" />
+  </p>
+
+  <p>
+    <label for="password">Confirm Password</label><br />
+    <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="password" />
+  </p>
+
+  <p>
+    <input name="commit" type="submit" value="Reset" />
+  </p>
+</form>
+

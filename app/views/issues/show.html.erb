@@ -1,0 +1,55 @@
+        <div class="writeboardtitle">
+          <h3><%=h @issue.short_description %></h3>
+          <br/><br/>
+          <% if @user.login != current_user.login %>
+              Assigned to:
+              <%=h @user.login%>
+          <% end %>
+        </div>
+        <hr/>
+        <div class="detailed_desciption">
+          <%if @issue.image.exists? %>
+            <%= image_tag @issue.image.url(:medium) %>
+          <%end%>
+          <p>
+            <%= @issue.detailed_description.gsub("\n","<br/>")%>
+          </p>
+          <%if @issue.status =="closed"%>
+            <p>
+              <b>Status:</b>
+              <%=h @issue.status %>
+            </p>
+          <%end%>
+        </div>
+        <div id="comments">
+          <% if !@posts.nil? %>
+            <div class="comment">
+              <h2 class="title">
+                <table>
+                  <% @posts.each do |post|
+                    user = User.find_by_id(post.user_id) %>
+                    <tr>
+                      <td valign="top" width="42">
+                        <% if !user.profile_file_size.nil? %>
+                          <%= image_tag user.profile.url(:thumb) %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <%= user.login %>
+                        <p><%= post.message .gsub("\n","<br/>") %></p>
+                      </td>
+                    </tr>
+                  <%end%>
+                </table>
+              </h2>
+            </div>
+          <%end%>
+          <div id="newcomment">
+            <form action="/posts/create/<%= @issue.id %>" method="post">
+              <textarea cols="60" id="message" name="message" rows="5"></textarea><br />
+              <input id="submit"name="commit" type="submit" value="Submit Comment" />
+            </form>
+          </div>
+        </div>
+        
+

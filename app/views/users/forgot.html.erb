@@ -1,0 +1,16 @@
+<form action="/users/forgot_password" method="post">
+  <p>
+    Reset Password Request
+  </p>
+  <p>
+    <label for="email">Email</label><br />
+    <input id="user_email" name="user[email]" size="30" type="text" />
+  </p>
+  <p>
+    <input name="commit" type="submit" value="Submit" />
+    <a href="/login">Cancel</a>
+  </p>
+</form>
+<div id="flash_notice">
+<%= flash[:notice] %>
+</div>

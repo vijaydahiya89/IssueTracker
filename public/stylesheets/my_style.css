@@ -1,0 +1,300 @@
+/*-------------------------------------------------
+PAGE BODY
+-------------------------------------------------*/
+
+body {
+	margin: 0 auto;
+	padding: 0;
+	font-family: "Lucida Grande", sans-serif;
+	color: #333;
+        background: #e5e5e5;
+        font-size: 12px;
+}
+
+#header {
+    background: black;
+    padding: 5px 15px 10px 0px;
+    color: #fff;
+    font-size: 12px;
+    height: 18px;
+}
+
+#header #div_upper_right
+{
+    height:17px;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    top: 6px;
+    right: 0px;
+    text-align: right;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: orange;
+    width:240px;
+    margin-right: 230px;
+}
+#header #div_upper_left
+{
+    height: 17px;
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: orange;
+    margin-left: 203px;
+}
+#header #div_upper_center
+{
+    margin-left: 530px;
+}
+
+
+#header a {
+    color: white;
+    text-decoration: none;
+}
+
+#header a:hover {
+    color: orange;
+}
+
+#logout {
+    text-align: right;
+    color: #fff;
+}
+
+#logout a{
+    text-decoration: none;
+}
+
+/*-------------------------------------------------
+STRUCTURE
+-------------------------------------------------*/
+
+#container {
+	margin: 12px auto 0 auto;
+	text-align: center;
+	width: 960px;
+	}
+
+.left {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	width: 960px;
+	float: left;
+	}
+
+#footer {
+  clear: left;
+  /*border-top: 1px solid #ccc;*/
+  padding: 3px;
+  font-size: 10px;
+  margin-left: 10px;
+}
+
+/*--------
+FOR PROPORTIONAL WIDTH
+------*/
+
+.col {
+	padding: 0 20px;
+	text-align: left;
+}
+
+.left .col {
+	padding: 1px 0 0 0;
+/*  background: #fff url("../images/right-bg.gif") right repeat-y;*/
+}
+
+
+.left .col .content {
+  padding: 0px 10px 0px 10px;
+  overflow: hidden;
+}
+
+
+.left .bottom_strip {
+  background: url(../images/bottom-bg.gif) top right no-repeat;
+  width:770px;
+  font-size: 8px;
+  margin-left: 10px;
+}
+
+
+/*-------------------------------------------------
+WRITEBOARD TITLE
+-------------------------------------------------*/
+.writeboardtitle
+{
+    overflow: hidden;
+    width: 720px;
+}
+
+.writeboardtitle h3
+{
+    margin: 0px 0px 15px 0px;
+    width: 600px;
+    float: left;
+}
+
+.writeboardtitle #close_comment
+{
+    overflow: hidden;
+}
+.div_button
+{
+   
+}
+.div_button a
+{
+    text-decoration: none;
+  -moz-border-radius:5px 5px 5px 5px;
+  background-color:gray;
+  border:1px solid gray;
+  color:#FFFFFF;
+  padding: 10px 31px 10px 31px ;
+  margin: 0px 20px 0px 20px;
+  text-align:center;
+}
+/*-------------------------------------------------
+WRITEBOARD BODY
+-------------------------------------------------*/
+
+.writeboardbody {
+  font-size: 14px;
+  line-height: 21px;
+  color: #000;
+  margin: 0 0px 0px 0px;
+  padding: 10px 20px 0px 12px;
+  width: 738px;
+  float: left;
+  background: #fff url("../images/right-bg.gif") right repeat-y;
+/*  border-right:1px dotted #cccccc;*/
+}
+
+/*-------------------------------------------------
+COMMENTS
+-------------------------------------------------*/
+
+.detailed_desciption{
+    border-bottom: 1px solid #DDDDDD;
+/*    background-color: red;*/
+}
+
+#comments {
+  font-size: 12px;
+  line-height: 16px;
+  color: #000;
+  margin: 0 0 15px 0;
+/*  border-top: 1px solid #ddd;*/
+}
+
+.comment {
+  padding: 5px 0;
+  margin: 0;
+}
+
+.comment h2.title {
+  font-size: 12px;
+  font-weight: normal;
+  color: #666;
+  margin: 0; padding: 0;
+}
+
+
+.comment h2.title strong {
+  color: #000;
+}
+
+#newcomment  {
+  font-size: 12px;
+  margin: 0 0 8px 48px;
+  color: black;
+}
+
+#newcomment h2 {
+  margin: 0px 0px 5px 0px;
+  font-size: 12px;
+}
+
+/*-------------------------------------------------
+SIDEBAR
+-------------------------------------------------*/
+.sidebar{
+
+    padding: 11px 0px 0px 0px;
+}
+
+.sidebar #new_issues
+{
+  margin-top:100px;
+  text-decoration: none;
+  -moz-border-radius:5px 5px 5px 5px;
+  background-color:gray;
+  border:1px solid gray;
+  color:#FFFFFF;
+  padding: 10px 32px 10px 32px;
+  margin: 0px 20px 0px 20px;
+  text-align: center;
+
+/*  text-align:center;*/
+}
+
+#button_login
+{
+    float:left;
+    margin-right: 7px;
+}
+
+#signup a {
+    float:left;
+    margin-right: 7px;
+}
+
+#image {
+border:medium none;
+margin:0;
+padding:0;
+}
+
+#flash_notice
+{
+    color: green;
+    margin-top: 30px;
+    font-size: 16px;
+}
+.title td p {
+    color: black;
+}
+
+textarea
+{
+   font-size: 15px;
+   font-family: "Lucida Grande", sans-serif;
+}
+.writeboardbody h3
+{
+    margin-top: 1px;
+}
+
+#newcomment #submit
+{
+    margin: 10px 0px 0px 0px;
+}
+
+hr{
+    color: #eeeeee;
+}
+
+.sidebar #flash_notice a
+{
+    margin: 1px 0px 0px 0px;
+    padding: 2px 2px 2px 30px;
+}
+
+.detailed_desciption img
+{
+    border: 2px solid #eeeeee;
+}
