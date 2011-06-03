@@ -1,7 +1,12 @@
 <%= stylesheet_link_tag 'my_issues' %>
+<%  if !@open_bugs.empty? or !@closed_bugs.empty? %>
 <h3>Bugs</h3>
 <%= render :partial => "bugs"%>
+<%end%>
+
+<%  if !@open_features.empty? or !@closed_features.empty? %>
 <h3>Features</h3>
 <%= render :partial => "features"%>
+<%end%>
 
 

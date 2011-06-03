@@ -18,11 +18,30 @@ class UserMailer < ActionMailer::Base
   end
   
   protected
-    def setup_email(user)
-      @recipients  = "#{user.email}"
-      @from        = "admin@issuetracker.com"
-      @subject     = "[#{SITE_URL}] "
-      @sent_on     = Time.now
-      @body[:user] = user
-    end
+  def setup_email(user)
+    @recipients  = "#{user.email}"
+    @from        = "team@lionsher.com"
+    @subject     = "[#{SITE_URL}] "
+    @sent_on     = Time.now
+    @body[:user] = user
+  end
+
+  def send_new_issue(issue,user)
+    setup_email(user)
+    @issue = issue
+    @user = user
+    @subject    += @issue.short_description
+    @from = "team@lionsher.com"
+    @body[:url] = "http://192.168.1.29:3000/issues/show/#{@issue.id}"
+    content_type "text/html"
+  end
+
+#  def send_new_comment(post,user,issue)
+#    setup_email(user)
+#    @post = post
+#    @user = user
+#    @issue = issue
+#    @from = "team@lionsher.com"
+#    content_type "text/html"
+#  end
 end

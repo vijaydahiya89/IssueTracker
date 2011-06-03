@@ -5,14 +5,14 @@
   @closed_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Bug","closed",:order => "id DESC")
   @open_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Feature","open",:order => "id DESC")
   @closed_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Feature","closed",:order => "id DESC")
-%>
-
-  <h3><%=h user.login %></h3>
-  <%= render :partial => "bugs"%>
- <%= render :partial => "features"%>
-<% end %>
-
-
+  xyz = Issue.find_all_by_assigned_to(user.id)
+  %>
+  <% if !xyz.empty? %>
+      <h3><%=h user.login %></h3>
+      <%= render :partial => "bugs"%>
+      <%= render :partial => "features"%>
+      <% end %>
+   <%end%>
 
 
 

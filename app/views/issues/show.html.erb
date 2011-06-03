@@ -23,13 +23,13 @@
                     user = User.find_by_id(post.user_id) %>
                     <tr>
                       <td valign="top" width="42">
-                        <% if !user.profile_file_size.nil? %>
+                        <% if user.profile.exists? %>
                           <%= image_tag user.profile.url(:thumb) %>
                         <% end %>
                       </td>
                       <td>
                         <%= user.login %>
-                        <p><%= post.message .gsub("\n","<br/>") %></p>
+                        <p><%= post.message.gsub("\n","<br/>") %></p>
                       </td>
                     </tr>
                   <%end%>
@@ -40,7 +40,7 @@
           <div id="newcomment">
             <form action="/posts/create/<%= @issue.id %>" method="post">
               <textarea cols="60" id="message" name="message" rows="5"></textarea><br />
-              <input id="submit"name="commit" type="submit" value="Submit Comment" />
+              <input id="submit" name="commit" type="submit" value="Submit Comment" />
             </form>
           </div>
         </div>

@@ -21,18 +21,18 @@
 
   <p>
     Assigned To:
-    <% @users = User.all %>
+    <%  @users = User.all(:order => 'login') %>
     <select name="issue[assigned_to]">
       <% @users.each do |user| %>
-        <option value="<%= user.id%>" <% if current_user.login == user.login then %> selected <% end %>><%= user.login %></option>
+        <option value="<%= user.id%>" <% if @issue.assigned_to == user.id then %> selected <% end %>><%= user.login %></option>
       <% end %>
     </select>
   </p>
   <p>
     Issue Type:
     <select name="issue[issue_type]">
-      <option value="Bug"<% if @issue.status == "Bug" then %> selected  <% end %>>Bug</option>
-      <option value="Feature"<% if @issue.status == "Feature" then %> selected <% end %>>Feature</option>
+      <option value="Bug"<% if @issue.issue_type == "Bug" then %> selected  <% end %>>Bug</option>
+      <option value="Feature"<% if @issue.issue_type == "Feature" then %> selected <% end %>>Feature</option>
     </select>
   </p>
 

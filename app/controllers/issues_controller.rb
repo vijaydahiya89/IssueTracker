@@ -26,7 +26,9 @@ class IssuesController < ApplicationController
     @issue = current_user.issues.create(params[:issue])
     @issue.status = "open"
     @issue.save
+    @user = User.find(@issue.assigned_to)
     flash[:notice] = "Issue Added"
+    UserMailer.deliver_send_new_issue(@issue,@user)
     redirect_to("/issues")
   end
 
