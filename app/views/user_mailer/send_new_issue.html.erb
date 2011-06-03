@@ -1,0 +1,13 @@
+<html>
+  <head>
+  </head>
+  <body>
+    Hi <%=h @user.login %>,<br/>
+    A new issue has been assigned to you: <%=h @issue.short_description %><br/>
+
+    Visit this url to check your issue:<br/><br/>
+
+    <a href="<%=h @url %>"><%=h @url %></a><br/><br/>
+
+   </body>
+</html>
