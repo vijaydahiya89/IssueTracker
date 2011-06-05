@@ -1,21 +1,26 @@
 <table width="735">
-<% @open_features.each do |feature|
-   login = User.find_by_id(feature.assigned_to).login %>
-  <tr>
-    <td width="585"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
-     <td width="50">      </td>
-    <td width="50"><%=h login %></td>
-    <td width="50"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
-  </tr>
-<%end%>
+  <% @open_features.each do |feature|
+    login = User.find_by_id(feature.assigned_to).login
+    visit = Visit.find_by_user_id_and_issue_id(current_user.id,feature.id)
+    @posts = Post.find_all_by_issue_id(feature.id,:conditions => ['created_at > ?',visit.visited_at])
+  %>
+    <tr>
+      <td width="410"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+      <td width="135"><% if @posts.length >= 1 %><font color="green"><%= @posts.length %> New Comments</font><%end%></td>
+      <td width="50"></td>
+      <td width="80"><%=h login %></td>
+      <td width="60"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
+    </tr>
+  <%end%>
 
-<% @closed_features.each do |feature|
-   login = User.find_by_id(feature.assigned_to).login %>
-  <tr>
-    <td width="585"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
-    <td width="50"><%=h feature.status %></td>
-    <td width="50"><%=h login %></td>
-    <td width="50"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
-  </tr>
-<%end%>
+  <% @closed_features.each do |feature|
+    login = User.find_by_id(feature.assigned_to).login %>
+    <tr>
+      <td width="410"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+      <td width="135"></td>
+      <td width="50"><%=h feature.status %></td>
+      <td width="80"><%=h login %></td>
+      <td width="60"><%=h ((Time.now - feature.created_at)/(3600*24)).to_i %> Days</td>
+    </tr>
+  <%end%>
 </table>

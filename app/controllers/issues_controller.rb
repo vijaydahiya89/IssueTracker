@@ -11,7 +11,11 @@ class IssuesController < ApplicationController
   def show
     @issue = Issue.find(params[:id])
     @user = User.find_by_id(@issue.assigned_to)
-    @posts = Post.find_all_by_issue_id(params[:id],:order => "created_at DESC")
+    @posts = Post.find_all_by_issue_id(params[:id])
+    if params[:from] != "posts"
+      @visit = Visit.find_by_user_id_and_issue_id(current_user.id,@issue.id)
+      @visit.update_attribute(:visited_at,Time.now)
+    end
   end
 
   def new
@@ -27,8 +31,16 @@ class IssuesController < ApplicationController
     @issue.status = "open"
     @issue.save
     @user = User.find(@issue.assigned_to)
+    @all_users = User.all
+    @all_users.each do |user|
+      @visit = Visit.new
+      @visit.user_id = user.id
+      @visit.issue_id = @issue.id
+      @visit.visited_at = Time.now
+      @visit.save
+    end
     flash[:notice] = "Issue Added"
-    UserMailer.deliver_send_new_issue(@issue,@user)
+#    UserMailer.deliver_send_new_issue(@issue,@user)
     redirect_to("/issues")
   end
 
@@ -41,6 +53,10 @@ class IssuesController < ApplicationController
   def destroy
     @issue = Issue.find(params[:id])
     @issue.destroy
+    @visits = Visit.find_all_by_issue_id(params[:id])
+    @visits.each do |visit|
+      visit.destroy
+    end
     redirect_to("/issues/my_issues/"+current_user.id.to_s)
   end
 
