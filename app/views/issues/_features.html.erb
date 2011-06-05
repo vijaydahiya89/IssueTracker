@@ -5,11 +5,10 @@
     @posts = Post.find_all_by_issue_id(feature.id,:conditions => ['created_at > ?',visit.visited_at])
   %>
     <tr>
-      <td width="30"><%=h feature.id %></td>
-      <td width="475"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
-      <td width="60">
+      <td width="495"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+      <td width="70">
           <% if @posts.length >= 1 %>
-            <font color="green"><%= @posts.length %></font><img src="/images/comment.png"/>
+            <font color="green"><%= @posts.length %> new</font><img src="/images/comment.png"/>
           <%end%>
       </td>
       <td width="50"></td>
@@ -24,9 +23,8 @@
   %>
   <% if days < 3 %>
     <tr>
-      <td width="30"><%=h feature.id %></td>
-      <td width="475"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
-      <td width="60"></td>
+      <td width="495"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+      <td width="70"></td>
       <td width="50"><%=h feature.status %></td>
       <td width="60"><%=h login %></td>
       <td width="60"><%=h days %> Days</td>
