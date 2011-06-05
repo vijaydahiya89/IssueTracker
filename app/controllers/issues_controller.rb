@@ -40,7 +40,7 @@ class IssuesController < ApplicationController
       @visit.save
     end
     flash[:notice] = "Issue Added"
-#    UserMailer.deliver_send_new_issue(@issue,@user)
+    UserMailer.deliver_send_new_issue(@issue,@user)
     redirect_to("/issues")
   end
 
@@ -89,4 +89,20 @@ class IssuesController < ApplicationController
     redirect_to("/issues/edit_user_details/"+ current_user.id.to_s)
   end
 
+  def update_visits
+    @users = User.all
+    @issues = Issue.all
+    @users.each do |user|
+      @issues.each do |issue|
+        @visit = Visit.new
+        @visit.user_id = user.id
+        @visit.issue_id = issue.id
+        @visit.visited_at = "2011-06-02 02:28:31"
+        @visit.save
+      end
+    end
+    flash[:notice]= "Visits Updated"
+    redirect_to("/issues")
+  end
+ 
 end
