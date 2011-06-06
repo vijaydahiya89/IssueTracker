@@ -1,4 +1,4 @@
-<table width="735" border="1">
+<table width="735">
   <% @open_bugs.each do |bug|
     login = User.find_by_id(bug.assigned_to).login
     visit = Visit.find_by_user_id_and_issue_id(current_user.id,bug.id)
