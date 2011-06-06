@@ -11,21 +11,27 @@ class UsersController < ApplicationController
     # uncomment at your own risk
     # reset_session
     if !params[:user][:login].empty? and !params[:user][:email].empty? and !params[:user][:password].empty? and !params[:user][:password_confirmation].empty?
-        @user = User.new(params[:user])
-        @user.save
-        if @user.errors.empty?
-          redirect_back_or_default('/')
-          flash[:notice] = "Thanks for signing up! Please check your email to activate your account."
-        else
-          flash[:notice] = "Already user Exists."
-          redirect_to('/users/new')
-        end
+      @user = User.new(params[:user])
+      @user.save
+      @issues = Issue.all
+      @issues.each do |issue|
+        @visit = Visit.new
+        @visit.user_id = @user.id
+        @visit.issue_id = issue.id
+        @visit.visited_at = "2011-06-02 02:28:31"
+        @visit.save
+      end
+      if @user.errors.empty?
+        redirect_back_or_default('/')
+        flash[:notice] = "Thanks for signing up! Please check your email to activate your account."
+      else
+        flash[:notice] = "Already user Exists."
+        redirect_to('/users/new')
+      end
     else
       flash[:notice] = "Mandatory fields missing"
       redirect_to('/users/new')
     end
-
-
   end
 
   def activate
@@ -42,10 +48,8 @@ class UsersController < ApplicationController
   end
 
   def forgot_password
-    
     if request.post?
       user = User.find_by_email(params[:user][:email])
-      logger.info"===========>>>#{user.inspect}"
       respond_to do |format|
         if user
           user.create_reset_code
@@ -55,12 +59,11 @@ class UsersController < ApplicationController
           format.xml { render :xml => user.email, :status => :created }
         else
           flash[:error] = "#{params[:user][:email]} does not exist in system"
-          format.html { redirect_to ('/forgot') }
+          format.html { redirect_to('/forgot') }
           flash[:notice] = "Enter correct Mail"
           format.xml { render :xml => user.email, :status => :unprocessable_entity }
         end
       end
-      
     end
   end
   
