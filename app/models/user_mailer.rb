@@ -36,12 +36,24 @@ class UserMailer < ActionMailer::Base
     content_type "text/html"
   end
 
-#  def send_new_comment(post,user,issue)
-#    setup_email(user)
-#    @post = post
-#    @user = user
-#    @issue = issue
-#    @from = "team@lionsher.com"
-#    content_type "text/html"
-#  end
+
+def send_new_comment(posts,user,issue)
+    setup_email(user)
+    @post = posts
+    @user = user
+    @issue = issue
+    @from = "team@lionsher.com"
+    @body[:url] = "http://192.168.1.29:3000/issues/show/#{@issue.id}"
+    content_type "text/html"
+  end
+
+  def send_new_comment_to_assigned_to(posts,user,issue)
+     setup_email(user)
+    @post = posts
+    @user = user
+    @issue = issue
+    @from = "team@lionsher.com"
+    @body[:url] = "http://192.168.1.29:3000/issues/show/#{@issue.id}"
+    content_type "text/html"
+  end
 end

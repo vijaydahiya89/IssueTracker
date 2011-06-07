@@ -8,12 +8,14 @@
     <tr>
       <td width="505"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
       <td width="50">
+        <%if @posts.length !=0%>
         <%= @posts.length %>
         <% if @new_posts.length >= 1 %>
           <img src="/images/new_comment.png"/>
         <%else%>
           <img src="/images/comment.png"/>
         <% end %>
+        <%end%>
       </td>
       <td width="60"></td>
       <td width="60"><%=h login %></td>
