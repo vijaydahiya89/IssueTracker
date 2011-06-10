@@ -324,3 +324,58 @@ table{
     font-size: 12px;
 }
 
+#my_issues_header
+{
+    height:45px;
+/*    background-color: red;*/
+}
+
+#my_issues_title
+{
+    height:25px;
+/*    background-color: green;*/
+    border-bottom:3px solid black;
+}
+.my_issues_title_left
+{
+    height:25px;
+/*    background-color: yellow;*/
+    float:left;
+    font-size: 18px;
+
+}
+#my_issues_title_right
+{
+    height:25px;
+/*    background-color: blue;*/
+    float:right;
+}
+#my_issues_title_bottom
+{
+/*    background-color: khaki;*/
+    height:16px;
+    text-align:right;
+}
+
+#my_issues_title_bottom a
+{
+    text-decoration: none;
+    color: black;
+    font-size: 11px;
+}
+#my_issues_title_right a
+{
+    text-decoration: none;
+    color:black;
+    font-size: 11px;
+}
+
+#my_issues_title_bottom a:hover
+{
+    color:blue;
+}
+
+#my_issues_title_right a:hover
+{
+    color:blue;
+}

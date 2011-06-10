@@ -1,0 +1,11 @@
+<html>
+  <head>
+  </head>
+  <body>
+    Hi <%=h @user.login %>,<br/><br/>
+    Issue: <%=h @issue.short_description %><br/><br/>
+    Status Updated: <%= @post.message %><br/><br/>
+    Visit this url to check Status :<br/><br/>
+    <a href="<%=h @url %>"><%=h @url %></a><br/><br/><br/>
+   </body>
+</html>

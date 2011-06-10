@@ -13,6 +13,23 @@
           <p>
             <%= @issue.detailed_description.gsub("\n","<br/>")%>
           </p>
+          <p>
+          <form action="/issues/reassign/<%= @issue.id %>" class="reassign" enctype="multipart/form-data" id="reassign" method="post">
+            <p>
+             <%  @users = User.all(:order => 'login')%>
+              <select name="issue[assigned_to]">
+                <% @users.each do |user| %>
+                 <option value="<%= user.id%>"><%= user.login %></option>
+                <% end %>
+              </select>
+            </p>
+            <p>
+            <p>
+              <input id="reassign_issue" name="commit" type="submit" value="Reassign" />
+            </p>
+            </p>
+            </form>
+          </p>
         </div>
         <div id="comments">
           <% if !@posts.nil? %>

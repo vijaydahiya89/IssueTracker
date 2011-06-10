@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'my_style' %>
+<%= stylesheet_link_tag 'user_bugs' %>
+<div id="my_issues_header">
+  <div id="my_issues_title">
+    <div class="my_issues_title_left">
+      <b>Everyone's Bugs</b>
+    </div>
+    <div id="my_issues_title_right">
+      <a id="user_everything" href="/issues/user_issues/<%=current_user.id %>"> Everything </a>~
+      <a id="user_bugs" href="/issues/user_bugs/<%=current_user.id %>"> Bugs </a>~
+      <a id="user_features" href="/issues/user_features/<%=current_user.id %>"> Features </a>~
+      <a id="user_enhancements" href="/issues/user_enhancements/<%=current_user.id %>"> Enhancements </a>~
+      <a id="user_tasks" href="/issues/user_tasks/<%=current_user.id %>"> Tasks </a>~
+      <a id="user_questions"href="/issues/user_questions/<%=current_user.id %>"> Queries </a>
+    </div>
+  </div>
+  <div id="my_issues_title_bottom">
+    <a href="/issues/my_issues/<%=current_user.id %>">Show My Issues</a>
+  </div>
+</div>
+<% @users.each do |user|
+  @open_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Bug","open",:order => "id DESC")
+  @solved_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Bug","solved",:order => "id DESC")
+  @tested_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Bug","tested",:order => "id DESC")
+  @closed_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Bug","closed",:order => "id DESC")
+   issue = Issue.find_all_by_assigned_to(user.id)
+%>
+<h3><%=h user.login %></h3>
+    <%= render :partial => "bugs"%>
+<%end%>

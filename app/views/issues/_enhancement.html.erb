@@ -1,0 +1,103 @@
+<table width="735">
+  <% @open_enhancements.each do |en|
+    login = User.find_by_id(en.assigned_to).login
+    visit = Visit.find_by_user_id_and_issue_id(current_user.id,en.id)
+    @new_posts = Post.find_all_by_issue_id(en.id,:conditions => ['created_at > ?',visit.visited_at])
+    @posts = Post.find_all_by_issue_id(en.id)
+  %>
+    <tr>
+      <td width="505"><a href="/issues/show/<%=h en.id%>"><%=h en.short_description[0..70] %></a></td>
+      <td width="50">
+        <% if @posts.length != 0 %>
+        <%= @posts.length %>
+
+        <% if @new_posts.length >= 1 %>
+          <img src="/images/new_comment.png"/>
+        <%else%>
+          <img src="/images/comment.png"/>
+        <% end %>
+          <%end%>
+      </td>
+      <td width="60"></td>
+      <td width="60"><%=h login %></td>
+      <td width="60"><%=h ((Time.now - en.created_at)/(3600*24)).to_i %> Days</td>
+    </tr>
+  <%end%>
+    <% @devcomplete_enhancements.each do |en|
+    login = User.find_by_id(en.assigned_to).login
+    visit = Visit.find_by_user_id_and_issue_id(current_user.id,en.id)
+    @new_posts = Post.find_all_by_issue_id(en.id,:conditions => ['created_at > ?',visit.visited_at])
+    @posts = Post.find_all_by_issue_id(en.id)
+  %>
+    <tr>
+      <td width="505"><a href="/issues/show/<%=h en.id%>"><%=h en.short_description[0..70] %></a></td>
+      <td width="50">
+        <% if @posts.length != 0 %>
+        <%= @posts.length %>
+
+        <% if @new_posts.length >= 1 %>
+          <img src="/images/new_comment.png"/>
+        <%else%>
+          <img src="/images/comment.png"/>
+        <% end %>
+          <%end%>
+      </td>
+      <td width="60"></td>
+      <td width="60"><%=h en.status %></td>
+      <td width="60"><%=h login %></td>
+      <td width="60"><%=h ((Time.now - en.created_at)/(3600*24)).to_i %> Days</td>
+    </tr>
+  <%end%>
+    <% @tested_enhancements.each do |en|
+    login = User.find_by_id(en.assigned_to).login
+    visit = Visit.find_by_user_id_and_issue_id(current_user.id,en.id)
+    @new_posts = Post.find_all_by_issue_id(en.id,:conditions => ['created_at > ?',visit.visited_at])
+    @posts = Post.find_all_by_issue_id(en.id)
+  %>
+    <tr>
+      <td width="505"><a href="/issues/show/<%=h en.id%>"><%=h en.short_description[0..70] %></a></td>
+      <td width="50">
+        <% if @posts.length != 0 %>
+        <%= @posts.length %>
+
+        <% if @new_posts.length >= 1 %>
+          <img src="/images/new_comment.png"/>
+        <%else%>
+          <img src="/images/comment.png"/>
+        <% end %>
+          <%end%>
+      </td>
+      <td width="60"></td>
+      <td width="60"><%=h en.status %></td>
+      <td width="60"><%=h login %></td>
+      <td width="60"><%=h ((Time.now - en.created_at)/(3600*24)).to_i %> Days</td>
+    </tr>
+  <%end%>
+    <% @closed_enhancements.each do |en|
+    login = User.find_by_id(en.assigned_to).login
+    visit = Visit.find_by_user_id_and_issue_id(current_user.id,en.id)
+    @new_posts = Post.find_all_by_issue_id(en.id,:conditions => ['created_at > ?',visit.visited_at])
+    @posts = Post.find_all_by_issue_id(en.id)
+  %>
+    <tr>
+      <td width="505"><a href="/issues/show/<%=h en.id%>"><%=h en.short_description[0..70] %></a></td>
+      <td width="50">
+        <% if @posts.length != 0 %>
+        <%= @posts.length %>
+
+        <% if @new_posts.length >= 1 %>
+          <img src="/images/new_comment.png"/>
+        <%else%>
+          <img src="/images/comment.png"/>
+        <% end %>
+          <%end%>
+      </td>
+      <td width="60"></td>
+      <td width="60"><%=h en.status %></td>
+      <td width="60"><%=h login %></td>
+      <td width="60"><%=h ((Time.now - en.created_at)/(3600*24)).to_i %> Days</td>
+    </tr>
+  <%end%>
+</table>
+<br/>
+

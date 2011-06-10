@@ -23,6 +23,35 @@
     </tr>
   <%end%>
 
+    <% @devcomplete_features.each do |feature|
+    login = User.find_by_id(feature.assigned_to).login
+    days = ((Time.now - feature.created_at)/(3600*24)).to_i
+  %>
+    <% if days <= 7 %>
+      <tr>
+        <td width="505"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+        <td width="50"></td>
+        <td width="60"><%=h feature.status %></td>
+        <td width="60"><%=h login %></td>
+        <td width="60"><%=h days %> Days</td>
+      </tr>
+    <% end %>
+  <%end%>
+      <% @tested_features.each do |feature|
+    login = User.find_by_id(feature.assigned_to).login
+    days = ((Time.now - feature.created_at)/(3600*24)).to_i
+  %>
+    <% if days <= 7 %>
+      <tr>
+        <td width="505"><a href="/issues/show/<%=h feature.id%>"><%=h feature.short_description[0..70] %></a></td>
+        <td width="50"></td>
+        <td width="60"><%=h feature.status %></td>
+        <td width="60"><%=h login %></td>
+        <td width="60"><%=h days %> Days</td>
+      </tr>
+    <% end %>
+  <%end%>
+
   <% @closed_features.each do |feature|
     login = User.find_by_id(feature.assigned_to).login
     days = ((Time.now - feature.created_at)/(3600*24)).to_i

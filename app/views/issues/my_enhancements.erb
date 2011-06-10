@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag 'my_style' %>
+<%= stylesheet_link_tag 'my_enhancements' %>
+<div id="my_issues_header">
+  <div id="my_issues_title">
+    <div class="my_issues_title_left">
+      <b>My Enhancements</b>
+    </div>
+    <div id="my_issues_title_right">
+      <a id="my_everything" href="/issues/my_issues/<%=current_user.id %>"> Everything </a>~
+      <a id="my_bugs" href="/issues/my_bugs/<%=current_user.id %>"> Bugs </a>~
+      <a id="my_features" href="/issues/my_features/<%=current_user.id %>"> Features </a>~
+      <a id="my_enhancements" href="/issues/my_enhancements/<%=current_user.id %>"> Enhancements </a>~
+      <a id="my_tasks"href="/issues/my_tasks/<%=current_user.id %>"> Tasks </a>~
+      <a id="my_questions"href="/issues/my_questions/<%=current_user.id %>"> Queries </a>
+    </div>
+  </div>
+  <div id="my_issues_title_bottom">
+    <a href="/issues/user_issues/<%=current_user.id %>">Show Everyone's Issues</a>
+  </div>
+</div>
+<h3>Enhancements</h3>
+  <%= render :partial => "enhancement"%>

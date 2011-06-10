@@ -1,0 +1,24 @@
+<%case
+when @issue.status =="open" then%>
+  <div id="close_comment">
+    <div class="div_button">
+      <a href="/issues/update_issue_status/<%= @issue.id %>?status=devcomplete">Dev Done</a>
+    </div>
+  </div>
+<%when @issue.status =="devcomplete"%>
+  <div id="close_comment">
+    <div class="div_button">
+      <a href="/issues/update_issue_status/<%= @issue.id %>?status=tested">Tested</a>
+    </div>
+  </div>
+<%when @issue.status =="tested"%>
+  <div id="close_comment">
+    <div class="div_button">
+      <a href="/issues/update_issue_status/<%= @issue.id %>?status=closed">Close</a>
+    </div>
+  </div>
+<%when @issue.status =="closed"%>
+   <div id="close_comment">
+    <label>Closed</label>
+  </div>
+<%end%>
