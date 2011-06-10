@@ -1,0 +1,52 @@
+<table width="735">
+  <% @open_tasks.each do |task|
+    login = User.find_by_id(task.assigned_to).login
+    visit = Visit.find_by_user_id_and_issue_id(current_user.id,task.id)
+    @new_posts = Post.find_all_by_issue_id(task.id,:conditions => ['created_at > ?',visit.visited_at])
+    @posts = Post.find_all_by_issue_id(task.id)
+  %>
+    <tr>
+      <td width="505"><a href="/issues/show/<%=h task.id%>"><%=h task.short_description[0..70] %></a></td>
+      <td width="50">
+        <% if @posts.length != 0 %>
+        <%= @posts.length %>
+        <% if @new_posts.length >= 1 %>
+          <img src="/images/green_bubble.png"/>
+        <%else%>
+          <img src="/images/bubble.png"/>
+        <% end %>
+          <%end%>
+      </td>
+      <td width="60"></td>
+      <td width="60"><%=h login %></td>
+      <td width="60"><%=h ((Time.now - task.created_at)/(3600*24)).to_i %> Days</td>
+    </tr>
+  
+    <%end%>
+    <% @closed_tasks.each do |task|
+    login = User.find_by_id(task.assigned_to).login
+    visit = Visit.find_by_user_id_and_issue_id(current_user.id,task.id)
+    @new_posts = Post.find_all_by_issue_id(task.id,:conditions => ['created_at > ?',visit.visited_at])
+    @posts = Post.find_all_by_issue_id(task.id)
+  %>
+    <tr>
+      <td width="505"><a href="/issues/show/<%=h task.id%>"><%=h task.short_description[0..70] %></a></td>
+      <td width="50">
+        <% if @posts.length != 0 %>
+        <%= @posts.length %>
+        <% if @new_posts.length >= 1 %>
+          <img src="/images/green_bubble.png"/>
+        <%else%>
+          <img src="/images/bubble.png"/>
+        <% end %>
+          <%end%>
+      </td>
+      <td width="60"></td>
+      <td width="60"><%=h task.status %></td>
+      <td width="60"><%=h login %></td>
+      <td width="60"><%=h ((Time.now - task.created_at)/(3600*24)).to_i %> Days</td>
+    </tr>
+  <%end%>
+</table>
+<br/>
+
