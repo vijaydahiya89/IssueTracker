@@ -40,20 +40,8 @@ class UserMailer < ActionMailer::Base
 
   #sending mail when new comment is added
 
-def send_new_comment(posts,user,issue)
+  def send_new_comment(posts,user,issue)
     setup_email(user)
-    @post = posts
-    @user = user
-    @issue = issue
-    @from = "team@lionsher.com"
-    @body[:url] = "http://192.168.1.29:3000/issues/show/#{@issue.id}"
-    content_type "text/html"
-  end
-
-  #sending a mail to the person to whom the mail is assigned to when a new comment is added
-
-  def send_new_comment_to_assigned_to(posts,user,issue)
-     setup_email(user)
     @post = posts
     @user = user
     @issue = issue

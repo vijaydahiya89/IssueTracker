@@ -4,15 +4,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-      <title>Issue Tracker: <%= controller.action_name %></title>
-      <%= stylesheet_link_tag 'my_style' %>
-      <%= javascript_include_tag :all %>
-      <link rel="icon" href="/images/bugz.jpg"/>
-      <script type="text/javascript">
-        setTimeout("new Effect.Fade('flash_notice');",5000)
-      </script>
+    <title>Issue Tracker: <%= controller.action_name %></title>
+    <%= stylesheet_link_tag 'my_style' %>
+    <%= javascript_include_tag :all %>
+    <link rel="icon" href="/images/bugz.jpg"/>
+    <script type="text/javascript">
+      setTimeout("new Effect.Fade('flash_notice');",5000)
+    </script>
   </head>
-  <body>
+  <body <% if controller.action_name == "new"%>onload="document.newissue.summary.focus()"<%elsif controller.action_name == "show"%>onload="document.newpost.message.focus()"<% end %>>
     <div id="header">
       <div id="div_upper_left">
         &nbsp;BUGZ
@@ -48,10 +48,9 @@
                   controller.action_name == "user_enhancements" or
                   controller.action_name == "user_tasks" or
                   controller.action_name == "user_questions" 
-                %>
+              %>
                 <a id="new_issues" href="/issues/new">New Issue</a>
               <% elsif controller.action_name == "show" %>
-
                 <% if @issue.issue_type =="Bug" %>
                    <%= render :partial => "case_bug" %>
                 <% elsif @issue.issue_type =="Feature" %>
@@ -63,7 +62,6 @@
                 <% elsif @issue.issue_type =="Question" %>
                    <%= render :partial => "case_question" %>
                 <% end %>
-
               <%end%>
               <br/><div id="flash_notice"><a><%=h flash[:notice] %></a></div>
             </div>
@@ -72,7 +70,7 @@
         <div class="bottom_strip">&nbsp;</div>
         <div id="footer"></div>
       </div>
-      </div>
+    </div>
 
-    </body>
-  </html>
+  </body>
+</html>
