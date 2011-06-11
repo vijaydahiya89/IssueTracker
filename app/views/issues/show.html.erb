@@ -16,10 +16,11 @@
           </p>
           <form action="/issues/reassign/<%= @issue.id %>" class="reassign" enctype="multipart/form-data" id="reassign" method="post">
             <p>
+             <%# @users = User.find_all_by_user_id(2422,:order => 'login') %>
              <% @users = User.all(:order => 'login') %>
               <select name="issue[assigned_to]">
                 <% @users.each do |user| %>
-                 <option value="<%= user.id%>"><%= user.login %></option>
+                 <option value="<%= user.id%>" <% if @issue.assigned_to == user.id then %> selected <% end %>><%= user.login %></option>
                 <% end %>
               </select>
               <input id="reassign_issue" name="commit" type="submit" value="Reassign" />

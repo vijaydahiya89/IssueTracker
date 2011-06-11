@@ -24,7 +24,8 @@
   </p>
   <p>
     Assign to<br/>
-    <%  @users = User.all(:order => 'login')%>
+    <%# @users = User.find_all_by_user_id(2422,:order => 'login') %>
+    <% @users = User.all(:order => 'login')%>
     <select name="issue[assigned_to]" style="width: 150px">
       <% @users.each do |user| %>
         <option value="<%= user.id%>"><%= user.login %></option>
