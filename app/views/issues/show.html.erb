@@ -11,24 +11,22 @@
             <%= image_tag @issue.image.url(:medium) %>
           <%end%>
           <p>
-            <%= RedCloth.new(@issue.detailed_description).to_html %>
+            <%#= RedCloth.new(@issue.detailed_description).to_html %>
+            <%= @issue.detailed_description.gsub("\n","<br/>") %>
           </p>
-          <p>
           <form action="/issues/reassign/<%= @issue.id %>" class="reassign" enctype="multipart/form-data" id="reassign" method="post">
             <p>
-             <% @users = User.find_all_by_user_id(2422,:order => 'login') %>
+             <% @users = User.all(:order => 'login') %>
               <select name="issue[assigned_to]">
                 <% @users.each do |user| %>
                  <option value="<%= user.id%>"><%= user.login %></option>
                 <% end %>
               </select>
-            </p>
-            <p>
               <input id="reassign_issue" name="commit" type="submit" value="Reassign" />
+              <a href="/issues/user_issues/<%= current_user.id %>">Home</a>
             </p>
-            </form>
-          </p>
-        </div>
+          </form>
+       </div>
         <div id="comments">
           <% if !@posts.nil? %>
             <div class="comment">
@@ -44,7 +42,10 @@
                       </td>
                       <td>
                         <label title="<%= post.id %>"><%= user.login %></label>
-                        <p><%= RedCloth.new(post.message).to_html %></p>
+                        <p>
+                          <%#= RedCloth.new(post.message).to_html %>
+                          <%= post.message.gsub("\n","<br/>") %>
+                        </p>
                       </td>
                     </tr>
                   <%end%>

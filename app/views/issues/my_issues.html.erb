@@ -6,40 +6,24 @@
     <div class="my_issues_title_left">
       <b>My Issues</b>
     </div>
-    <div id="my_issues_title_right">
-      <a id="my_everything" href="/issues/my_issues/<%=current_user.id %>"> Everything </a>~
-      <a id="my_bugs" href="/issues/my_bugs/<%=current_user.id %>"> Bugs </a>~
-      <a id="my_features" href="/issues/my_features/<%=current_user.id %>"> Features </a>~
-      <a id="my_enhancements" href="/issues/my_enhancements/<%=current_user.id %>"> Enhancements </a>~
-      <a id="my_tasks"href="/issues/my_tasks/<%=current_user.id %>"> Tasks </a>~
-      <a id="my_questions"href="/issues/my_questions/<%=current_user.id %>"> Queries </a>
-    </div>
+    <%= render :partial => "my_panel"%>
   </div>
   <div id="my_issues_title_bottom">
     <a href="/issues/user_issues/<%=current_user.id %>">Show Everyone's Issues</a>
   </div>
 </div>
-<%  if !@open_bugs.empty? or !@solved_bugs.empty? or !@tested_bugs.empty? or !@closed_bugs.empty? %>
+
   <h3>Bugs</h3>
   <%= render :partial => "bugs"%>
-<%end%>
 
-<%  if !@open_features.empty? or !@devcomplete_features.empty? or !@tested_features.empty? or !@closed_features.empty? %>
   <h3>Features</h3>
   <%= render :partial => "features"%>
-<%end%>
 
-<%  if !@open_enhancements.empty? or !@devcomplete_enhancements.empty? or !@tested_enhancements.empty? or !@closed_enhancements.empty?  %>
   <h3>Enhancements</h3>
-  <%= render :partial => "enhancement"%>
-<%end%>
+  <%= render :partial => "enhancements"%>
 
-<%  if !@open_tasks.empty? or !@closed_tasks.empty?  %>
   <h3>Tasks</h3>
-  <%= render :partial => "task"%>
-<%end%>
+  <%= render :partial => "tasks"%>
 
-<%  if !@open_questions.empty? or !@open_questions.empty? %>
-  <h3>Question's</h3>
-  <%= render :partial => "question"%>
-<%end%>
+  <h3>Questions</h3>
+  <%= render :partial => "queries"%>

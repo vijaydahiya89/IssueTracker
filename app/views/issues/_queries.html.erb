@@ -1,0 +1,9 @@
+<table width="735" border="1">
+  <% @open_queries.each do |@issue|%>
+      <%= render :partial => "content"%>
+  <% end %>
+  
+  <% @answered_queries.each do |@issue|%>
+      <%= render :partial => "content"%>
+  <% end %>
+</table>

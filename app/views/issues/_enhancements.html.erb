@@ -1,0 +1,17 @@
+<table width="735" border="1">
+  <% @open_enhancements.each do |@issue|%>
+    <%= render :partial => "content" %>
+  <% end %>
+
+  <% @devdone_enhancements.each do |@issue|%>
+    <%= render :partial => "content" %>
+  <% end %>
+
+  <% @tested_enhancements.each do |@issue|%>
+    <%= render :partial => "content" %>
+  <% end %>
+
+  <% @closed_enhancements.each do |@issue|%>
+    <%= render :partial => "content" %>
+  <% end %>
+</table>

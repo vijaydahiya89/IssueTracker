@@ -1,0 +1,16 @@
+<%= stylesheet_link_tag 'my_style' %>
+<%= stylesheet_link_tag 'my_questions' %>
+<div id="my_issues_header">
+  <div id="my_issues_title">
+    <div class="my_issues_title_left">
+      <b>My Questions</b>
+    </div>
+    <%= render :partial => "my_panel"%>
+  </div>
+  <div id="my_issues_title_bottom">
+    <a href="/issues/user_issues/<%=current_user.id %>">Show Everyone's Issues</a>
+  </div>
+
+</div>
+<h3>Questions</h3>
+  <%= render :partial => "queries"%>

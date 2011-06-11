@@ -1,0 +1,12 @@
+<%case
+when @issue.status =="Open" then%>
+  <div id="close_comment">
+    <div class="div_button">
+      <a href="/issues/update_issue_status/<%= @issue.id %>?status=Answered">Answer</a>
+    </div>
+  </div>
+<%when @issue.status =="Answered"%>
+  <div id="close_comment">
+    <label>Answered</label>
+  </div>
+<%end%>

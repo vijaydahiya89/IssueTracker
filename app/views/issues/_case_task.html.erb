@@ -1,12 +1,12 @@
 <%case
-when @issue.status =="open" then%>
+when @issue.status =="Open" then%>
   <div id="close_comment">
     <div class="div_button">
-      <a href="/issues/update_issue_status/<%= @issue.id %>?status=closed">Close</a>
+      <a href="/issues/update_issue_status/<%= @issue.id %>?status=Done">Done</a>
     </div>
   </div>
-<%when @issue.status =="closed"%>
+<%when @issue.status =="Done"%>
    <div id="close_comment">
-    <label>Closed</label>
+    <label>Done</label>
   </div>
 <%end%>

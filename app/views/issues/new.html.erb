@@ -6,11 +6,11 @@
   </p>
   <p>
     <label for="issue_detailed_description">Detailed description</label><br />
-    <textarea cols="40" id="issue_detailed_description" name="issue[detailed_description]" rows="20"></textarea>
+    <textarea cols="52" id="issue_detailed_description" name="issue[detailed_description]" rows="20"></textarea>
   </p>
   <p>
     Assigned To:
-    <%  @users = User.find_all_by_user_id(2422,:order => 'login')%>
+    <%  @users = User.all(:order => 'login') %>
     <select name="issue[assigned_to]">
       <% @users.each do |user| %>
         <option value="<%= user.id%>"><%= user.login %></option>
@@ -24,7 +24,7 @@
       <option value="Feature">Feature</option>
       <option value="Enhancement">Enhancement</option>
       <option value="Task">Task</option>
-      <option value="Question">Question</option>
+      <option value="Query">Query</option>
     </select>
   </p>
   <p>

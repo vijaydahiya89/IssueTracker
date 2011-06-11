@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag 'my_style' %>
+<%= stylesheet_link_tag 'user_questions' %>
+<div id="my_issues_header">
+  <div id="my_issues_title">
+    <div class="my_issues_title_left">
+      <b>Everyone's Questions</b>
+    </div>
+    <%= render :partial => "user_panel"%>
+  </div>
+  <div id="my_issues_title_bottom">
+    <a href="/issues/my_issues/<%=current_user.id %>">Show My Issues</a>
+  </div>
+</div>
+<% @users.each do |user|
+  @open_queries = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Query","Open",:order => "id DESC")
+  @answered_queries = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Query","Answered",:order => "id DESC")
+  issue = Issue.find_all_by_assigned_to(user.id)
+%>
+<% if !issue.empty? %>
+<h3><%=h user.login %></h3>
+    <%= render :partial => "queries"%>
+<%end%>
+<%end%>

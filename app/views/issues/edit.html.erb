@@ -17,7 +17,7 @@
   </p>
   <p>
     Assigned To:
-    <% @users = User.find_all_by_user_id(2422,:order => 'login') %>
+    <% @users = User.all(:order => 'login') %>
     <select name="issue[assigned_to]">
       <% @users.each do |user| %>
         <option value="<%= user.id%>" <% if @issue.assigned_to == user.id then %> selected <% end %>><%= user.login %></option>
@@ -31,7 +31,7 @@
       <option value="Feature"<% if @issue.issue_type == "Feature" then %> selected <% end %>>Feature</option>
       <option value="Enhancement"<% if @issue.issue_type == "Enhancement" then %> selected  <% end %>>Enhancement</option>
       <option value="Task"<% if @issue.issue_type == "Task" then %> selected  <% end %>>Task</option>
-      <option value="Question"<% if @issue.issue_type == "Question" then %> selected  <% end %>>Question</option>
+      <option value="Query"<% if @issue.issue_type == "Query" then %> selected  <% end %>>Question</option>
     </select>
   </p>
   <br />

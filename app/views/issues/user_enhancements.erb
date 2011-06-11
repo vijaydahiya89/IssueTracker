@@ -5,27 +5,21 @@
     <div class="my_issues_title_left">
       <b>Everyone's Issue</b>
     </div>
-<div id="my_issues_title_right">
-      <a id="user_everything" href="/issues/user_issues/<%=current_user.id %>"> Everything </a>~
-      <a id="user_bugs" href="/issues/user_bugs/<%=current_user.id %>"> Bugs </a>~
-      <a id="user_features" href="/issues/user_features/<%=current_user.id %>"> Features </a>~
-      <a id="user_enhancements" href="/issues/user_enhancements/<%=current_user.id %>"> Enhancements </a>~
-      <a id="user_tasks" href="/issues/user_tasks/<%=current_user.id %>"> Tasks </a>~
-      <a id="user_questions"href="/issues/user_questions/<%=current_user.id %>"> Queries </a>
-    </div>
+    <%= render :partial => "user_panel"%>
   </div>
   <div id="my_issues_title_bottom">
     <a href="/issues/my_issues/<%=current_user.id %>">Show My Issues</a>
   </div>
 </div>
 <% @users.each do |user|
-  @open_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Enhancement","open",:order => "id DESC")
-  @devcomplete_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Enhancement","devcomplete",:order => "id DESC")
-  @tested_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Enhancement","tested",:order => "id DESC")
-  @closed_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Enhancement","closed",:order => "id DESC")
-  
+  @open_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Enhancement","Open",:order => "id DESC")
+  @devdone_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Enhancement","Devdone",:order => "id DESC")
+  @tested_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Enhancement","Tested",:order => "id DESC")
+  @closed_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(user.id,"Enhancement","Closed",:order => "id DESC")
   issue = Issue.find_all_by_assigned_to(user.id)
 %>
+<% if !issue.empty? %>
 <h3><%=h user.login %></h3>
-    <%= render :partial => "enhancement"%>
+    <%= render :partial => "enhancements"%>
+<%end%>
 <%end%>

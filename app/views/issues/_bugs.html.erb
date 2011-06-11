@@ -1,132 +1,17 @@
-<table width="735">
-  <% @open_bugs.each do |bug|
-    login = User.find_by_id(bug.assigned_to).login
-    days = ((Time.now - bug.created_at)/(3600*24)).to_i 
-    visit = Visit.find_by_user_id_and_issue_id(current_user.id,bug.id)
-    @new_posts = Post.find_all_by_issue_id(bug.id,:conditions => ['created_at > ?',visit.visited_at])
-    @posts = Post.find_all_by_issue_id(bug.id)
-  %>
-    <tr>
-      <td width="505"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
-      <td width="50">
-        <% if @posts.length > 0 %>
-        <%= @posts.length %>
-        <% if @new_posts.length >= 1 %>
-          <img src="/images/green_bubble.png"/>
-        <%else%>
-          <img src="/images/bubble.png"/>
-        <% end %>
-          <%end%>
-      </td>
-      <td width="60"></td>
-      <td width="60"><%=h login %></td>
-      <td width="60">
-        <% if days == 0 %>
-             Today
-        <% elsif days == 1 %>
-             Yesterday
-        <% elsif days > 1 %>
-             <%= days %> days
-        <% end %>
-      </td>
-    </tr>
-  <%end%>
+<table width="735" border="1">
+  <% @open_bugs.each do |@issue| %>
+    <%= render :partial => "content" %>
+  <% end %>
 
-  <% @solved_bugs.each do |bug|
-    login = User.find_by_id(bug.assigned_to).login
-    days = ((Time.now - bug.created_at)/(3600*24)).to_i
-  %>
-    <% if days <= 7 %>
-      <tr>
-        <td width="505"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
-        <td width="50">
-        <% if @posts.length > 0 %>
-            <%= @posts.length %>
-        <% if @new_posts.length >= 1 %>
-          <img src="/images/green_bubble.png"/>
-        <%else%>
-          <img src="/images/bubble.png"/>
-        <% end %>
-        <%end%>
-        </td>
-        <td width="60"><%=h bug.status %></td>
-        <td width="60"><%=h login %></td>
-        <td width="60">
-        <% if days == 0 %>
-             Today
-        <% elsif days == 1 %>
-             Yesterday
-        <% elsif days > 1 %>
-             <%= days %> days
-        <% end %>
-        </td>
-      </tr>
-    <% end %>
-  <%end%>
-  
-  <% @tested_bugs.each do |bug|
-    login = User.find_by_id(bug.assigned_to).login
-    days = ((Time.now - bug.created_at)/(3600*24)).to_i
-  %>
-  <% if days <= 7 %>
-      <tr>
-        <td width="505"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
-        <td width="50">
-        <% if @posts.length > 0 %>
-            <%= @posts.length %>
-        <% if @new_posts.length >= 1 %>
-          <img src="/images/green_bubble.png"/>
-        <%else%>
-          <img src="/images/bubble.png"/>
-        <% end %>
-        <%end%>
-        </td>
-        <td width="60"><%=h bug.status %></td>
-        <td width="60"><%=h login %></td>
-        <td width="60">
-        <% if days == 0 %>
-             Today
-        <% elsif days == 1 %>
-             Yesterday
-        <% elsif days > 1 %>
-             <%= days %> days
-        <% end %>
-        </td>
-      </tr>
-    <% end %>
-  <%end%>
+  <% @fixed_bugs.each do |@issue| %>
+    <%= render :partial => "content" %>
+  <% end %>
 
-  <% @closed_bugs.each do |bug|
-    login = User.find_by_id(bug.assigned_to).login
-    days = ((Time.now - bug.updated_at)/(3600*24)).to_i
-  %>
-    <% if days <= 7 %>
-      <tr>
-        <td width="505"><a href="/issues/show/<%=h bug.id%>"><%=h bug.short_description[0..70] %></a></td>
-        <td width="50">
-        <% if @posts.length > 0 %>
-            <%= @posts.length %>
-        <% if @new_posts.length >= 1 %>
-          <img src="/images/green_bubble.png"/>
-        <%else%>
-          <img src="/images/bubble.png"/>
-        <% end %>
-        <%end%>
-        </td>
-        <td width="60"><%=h bug.status %></td>
-        <td width="60"><%=h login %></td>
-        <td width="60">
-        <% if days == 0 %>
-             Today
-        <% elsif days == 1 %>
-             Yesterday
-        <% elsif days > 1 %>
-             <%= days %> days
-        <% end %>
-        </td>
-      </tr>
-    <% end %>
-  <%end%>
+  <% @tested_bugs.each do |@issue|%>
+    <%= render :partial => "content" %>
+  <% end %>
+
+  <% @closed_bugs.each do |@issue|%>
+    <%= render :partial => "content" %>
+  <% end %>
 </table>
-<br/>
-
