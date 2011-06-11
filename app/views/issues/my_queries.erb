@@ -3,7 +3,7 @@
 <div id="my_issues_header">
   <div id="my_issues_title">
     <div class="my_issues_title_left">
-      <b>My Questions</b>
+      <b>My Queries</b>
     </div>
     <%= render :partial => "my_panel"%>
   </div>
@@ -12,5 +12,7 @@
   </div>
 
 </div>
-<h3>Questions</h3>
+<% if !@queries.empty? %>
+  <h3>Queries</h3>
   <%= render :partial => "queries"%>
+<%end%>

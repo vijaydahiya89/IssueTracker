@@ -11,5 +11,7 @@
     <a href="/issues/user_issues/<%=current_user.id %>">Show Everyone's Issues</a>
   </div>
 </div>
-<h3>Features</h3>
+<% if !@features.empty? %>
+  <h3>Features</h3>
   <%= render :partial => "features"%>
+<%end%>

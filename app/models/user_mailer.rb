@@ -34,7 +34,8 @@ class UserMailer < ActionMailer::Base
     @user = user
     @subject    += @issue.short_description
     @from = "team@lionsher.com"
-    @body[:url] = "http://192.168.1.29:3000/issues/show/#{@issue.id}"
+#    @body[:url] = "http://bugz.kernlearning.com/issues/show/#{@issue.id}"  # on staging
+    @body[:url] = "http://localhost:3000/issues/show/#{@issue.id}"
     content_type "text/html"
   end
 
@@ -46,7 +47,8 @@ class UserMailer < ActionMailer::Base
     @user = user
     @issue = issue
     @from = "team@lionsher.com"
-    @body[:url] = "http://192.168.1.29:3000/issues/show/#{@issue.id}"
+#    @body[:url] = "http://bugz.kernlearning.com/issues/show/#{@issue.id}"  # on staging
+    @body[:url] = "http://localhost:3000/issues/show/#{@issue.id}"
     content_type "text/html"
   end
 
@@ -57,9 +59,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     @issue = issue
     @from = "team@lionsher.com"
-    @body[:url] = "http://192.168.1.29:3000/issues/show/#{@issue.id}"
+#    @body[:url] = "http://bugz.kernlearning.com/issues/show/#{@issue.id}"  # on staging
+    @body[:url] = "http://localhost:3000/issues/show/#{@issue.id}"
     content_type "text/html"
   end
-
 
 end

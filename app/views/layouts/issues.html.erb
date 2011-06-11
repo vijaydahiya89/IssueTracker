@@ -12,7 +12,13 @@
       setTimeout("new Effect.Fade('flash_notice');",5000)
     </script>
   </head>
-  <body <% if controller.action_name == "new"%>onload="document.newissue.summary.focus()"<%elsif controller.action_name == "show"%>onload="document.newpost.message.focus()"<% end %>>
+  <body <% if controller.action_name == "new" or controller.action_name == "new_feature" or controller.action_name == "new_enhancement"%>
+           onload="document.newissue.summary.focus()"
+        <% elsif controller.action_name == "new_task" or controller.action_name == "new_query" %>
+           onload="document.newissue.detailed_description.focus()"
+        <%elsif controller.action_name == "show"%>
+           onload="document.newpost.message.focus()"
+        <% end %>>
     <div id="header">
       <div id="div_upper_left">
         &nbsp;BUGZ
@@ -56,8 +62,12 @@
                 <% elsif @issue.issue_type =="Query" %>
                    <%= render :partial => "case_query" %>
                 <% end %>
-              <%end%>
-              <br/><div id="flash_notice"><a><%=h flash[:notice] %></a></div>
+              <% end %>
+              <% if @issue.nil? %>
+                <div id="flash_notice"></div>
+              <% else %>
+                <br/><div id="flash_notice"><a><%=h flash[:notice] %></a></div>
+              <% end %>
             </div>
           </div>
         </div>

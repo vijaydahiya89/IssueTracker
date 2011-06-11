@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     if @posts.length == 0 and @issue.user_id == current_user.id
       merged_description = @issue.detailed_description + "\n\n" + params[:message]
       @issue.update_attribute(:detailed_description, merged_description)
-    elsif @posts.last.user_id == current_user.id
+    elsif @posts.length > 0 and @posts.last.user_id == current_user.id
       merged_comment = @posts.last.message + "\n\n" + params[:message]
       @posts.last.update_attribute(:message, merged_comment)
     else

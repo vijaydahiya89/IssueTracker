@@ -17,6 +17,7 @@
   </p>
   <p>
     Assigned To:
+    <%# @users = User.find_all_by_user_id(2422,:order => 'login') %>
     <% @users = User.all(:order => 'login') %>
     <select name="issue[assigned_to]">
       <% @users.each do |user| %>

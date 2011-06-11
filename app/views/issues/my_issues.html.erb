@@ -12,18 +12,27 @@
     <a href="/issues/user_issues/<%=current_user.id %>">Show Everyone's Issues</a>
   </div>
 </div>
-
+<% if !@bugs.empty? %>
   <h3>Bugs</h3>
   <%= render :partial => "bugs"%>
+<%end%>
 
+<% if !@features.empty? %>
   <h3>Features</h3>
   <%= render :partial => "features"%>
+<%end%>
 
+<% if !@enhancements.empty? %>
   <h3>Enhancements</h3>
   <%= render :partial => "enhancements"%>
+<%end%>
 
+<% if !@tasks.empty? %>
   <h3>Tasks</h3>
   <%= render :partial => "tasks"%>
+<%end%>
 
-  <h3>Questions</h3>
+<% if !@queries.empty? %>
+  <h3>Queries</h3>
   <%= render :partial => "queries"%>
+<%end%>

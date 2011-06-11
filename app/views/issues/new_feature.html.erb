@@ -2,8 +2,8 @@
 <%= stylesheet_link_tag 'new_bug' %>
 <h3>Add New</h3>
   <ul class="nav_list_ul">
-     <li><a id="new_bug" href="/issues/new">Bug</a></li>
-     <li><a href="/issues/new_feature/<%= current_user.id%>"> Feature</a></li>
+     <li><a href="/issues/new">Bug</a></li>
+     <li><a id="new_feature" href="/issues/new_feature/<%= current_user.id%>"> Feature</a></li>
      <li><a href="/issues/new_enhancement/<%= current_user.id%>">Enhancement</a></li>
      <li><a href="/issues/new_task/<%= current_user.id%>">Task</a></li>
      <li><a href="/issues/new_query/<%= current_user.id%>">Query</a></li>
@@ -33,11 +33,11 @@
   </p>
   <hr/>
   <p>
-    <input type="hidden" name="issue[issue_type]" value="Bug" />
+    <input type="hidden" name="issue[issue_type]" value="Feature" />
   </p>
   <div id="div_bug_cancel">
     <p>
-      <input id="issue_submit" name="commit" type="submit" value="Add Bug" />
+      <input id="issue_submit" name="commit" type="submit" value="Add Feature" />
       or <a id="bug_cancel" href="/issues/user_issues/<%= current_user.id%>">Cancel</a>
     </p>
   </div>
