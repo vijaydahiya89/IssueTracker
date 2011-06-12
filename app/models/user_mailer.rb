@@ -32,7 +32,7 @@ class UserMailer < ActionMailer::Base
     setup_email(user)
     @issue = issue
     @user = user
-    @subject    += @issue.short_description
+    @subject += "BUGZ: A new issue has been assigned to you"
     @from = "team@lionsher.com"
 #    @body[:url] = "http://bugz.kernlearning.com/issues/show/#{@issue.id}"  # on staging
     @body[:url] = "http://localhost:3000/issues/show/#{@issue.id}"
@@ -46,6 +46,7 @@ class UserMailer < ActionMailer::Base
     @post = posts
     @user = user
     @issue = issue
+    @subject += "BUGZ: A new comment has been posted"
     @from = "team@lionsher.com"
 #    @body[:url] = "http://bugz.kernlearning.com/issues/show/#{@issue.id}"  # on staging
     @body[:url] = "http://localhost:3000/issues/show/#{@issue.id}"
@@ -54,10 +55,11 @@ class UserMailer < ActionMailer::Base
 
   #sending the mail to the assigned to for the status update of the comment
   def send_comment_to_assigned_to_for_status(post,user,issue)
-      setup_email(user)
+    setup_email(user)
     @post = post
     @user = user
     @issue = issue
+    @subject += "BUGZ: Issue status has been updated"
     @from = "team@lionsher.com"
 #    @body[:url] = "http://bugz.kernlearning.com/issues/show/#{@issue.id}"  # on staging
     @body[:url] = "http://localhost:3000/issues/show/#{@issue.id}"

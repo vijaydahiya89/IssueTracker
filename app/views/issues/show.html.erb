@@ -1,5 +1,6 @@
         <div class="writeboardtitle">
           <h3><%=h @issue.short_description %></h3>
+          <a id="home" href="/issues/user_issues/<%= current_user.id %>">Home</a>
           <br/><br/>
           <% if @user.login != current_user.login %>
               Assigned to <%=h @user.login%>
@@ -24,7 +25,6 @@
                 <% end %>
               </select>
               <input id="reassign_issue" name="commit" type="submit" value="Reassign" />
-              <a href="/issues/user_issues/<%= current_user.id %>">Home</a>
             </p>
           </form>
        </div>

@@ -52,7 +52,7 @@ class IssuesController < ApplicationController
       @visit.save
     end
     flash[:notice] = "Issue Added"
-#    UserMailer.deliver_send_new_issue(@issue,@user)
+    UserMailer.deliver_send_new_issue(@issue,@user)
     redirect_to("/issues/user_issues/#{current_user.id}")
   end
 
