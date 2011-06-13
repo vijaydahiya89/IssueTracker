@@ -112,7 +112,7 @@ FOR PROPORTIONAL WIDTH
 
 
 .left .bottom_strip {
-    background: url(../images/bottom-bg.gif) top right no-repeat;
+    background: url(../../images/bottom-bg.gif) top right no-repeat;
     width:770px;
     font-size: 8px;
     margin-left: 0px;
@@ -163,7 +163,7 @@ WRITEBOARD BODY
     padding: 10px 20px 0px 12px;
     width: 738px;
     float: left;
-    background: #fff url("../images/right-bg.gif") right repeat-y;
+    background: #fff url("../../images/right-bg.gif") right repeat-y;
     /*  border-right:1px dotted #cccccc;*/
 }
 

@@ -182,7 +182,7 @@ class IssuesController < ApplicationController
     @post.issue_id = @issue.id
     @post.save
     #sending the mail to the user for the status update
-#    UserMailer.deliver_send_comment_to_assigned_to_for_status(@post,@user,@issue)
+    UserMailer.deliver_send_comment_to_assigned_to_for_status(@post,@user,@issue)
     redirect_to("/issues/user_issues/#{current_user.id}")
   end
 
@@ -199,7 +199,7 @@ class IssuesController < ApplicationController
     @post.issue_id = @issue.id
     @post.save
     #sending the mail to the person to whom the issue is being assigned to.
-#    UserMailer.deliver_send_new_issue(@issue,@user)
+    UserMailer.deliver_send_new_issue(@issue,@user)
     redirect_to("/issues/user_issues/#{current_user.id}")
   end
 

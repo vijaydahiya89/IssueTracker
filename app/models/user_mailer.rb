@@ -41,9 +41,9 @@ class UserMailer < ActionMailer::Base
 
   #sending mail when new comment is added
 
-  def send_new_comment(posts,user,issue)
+  def send_new_comment(post,user,issue)
     setup_email(user)
-    @post = posts
+    @post = post
     @user = user
     @issue = issue
     @subject += "BUGZ: A new comment has been posted"

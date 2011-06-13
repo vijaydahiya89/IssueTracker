@@ -36,7 +36,7 @@ class PostsController < ApplicationController
         all_users << @user
       end
       all_users.each do |user|
-        UserMailer.deliver_send_new_comment(@posts.last,user,@issue)
+        UserMailer.deliver_send_new_comment(@post,user,@issue)
       end
     end
     redirect_to("/issues/show/#{params[:id]}?from=posts")
