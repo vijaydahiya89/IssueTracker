@@ -12,10 +12,12 @@
       setTimeout("new Effect.Fade('flash_notice');",5000)
     </script>
   </head>
-  <body <% if controller.action_name == "new" or controller.action_name == "new_feature" or controller.action_name == "new_enhancement"%>
+  <body <% if controller.action_name == "new" or
+              controller.action_name == "new_feature" or
+              controller.action_name == "new_enhancement" or
+              controller.action_name == "new_task" or
+              controller.action_name == "new_query" %>
            onload="document.newissue.summary.focus()"
-        <% elsif controller.action_name == "new_task" or controller.action_name == "new_query" %>
-           onload="document.newissue.detailed_description.focus()"
         <%elsif controller.action_name == "show"%>
            onload="document.newpost.message.focus()"
         <% end %>>

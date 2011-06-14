@@ -9,7 +9,7 @@
      <li><a href="/issues/new_query/<%= current_user.id%>">Query</a></li>
 </ul>
 <div class="clearfix"></div>
-<form name="newissue" action="/issues/create" class="new_issue" enctype="multipart/form-data" id="new_issue" method="post">
+<form onsubmit="return validate_form('issue_short_description');" name="newissue" action="/issues/create" class="new_issue" enctype="multipart/form-data" id="new_issue" method="post">
   <p>
     Summary<br/>
     <input id="issue_short_description" name="summary" size="66" maxlength="60" type="text" />

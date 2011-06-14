@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
+ 
   end
 
   def create
@@ -10,7 +11,11 @@ class UsersController < ApplicationController
     # request forgery protection.
     # uncomment at your own risk
     # reset_session
-    if !params[:user][:login].empty? and !params[:user][:email].empty? and !params[:user][:password].empty? and !params[:user][:password_confirmation].empty?
+    @user = User.find_by_email(params[:user][:email])
+    if !@user.nil?
+      flash[:notice] = "User already exists."
+      redirect_to('/users/new')
+    elsif !params[:user][:login].empty? and !params[:user][:email].empty? and !params[:user][:password].empty? and !params[:user][:password_confirmation].empty?
       @user = User.new(params[:user])
       @user.save
       @issues = Issue.all
@@ -25,7 +30,7 @@ class UsersController < ApplicationController
         redirect_back_or_default('/')
         flash[:notice] = "Thanks for signing up! Please check your email to activate your account."
       else
-        flash[:notice] = "Already user Exists."
+        flash[:notice] = "Invalid details."
         redirect_to('/users/new')
       end
     else

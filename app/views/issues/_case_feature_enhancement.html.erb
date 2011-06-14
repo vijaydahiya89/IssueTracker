@@ -17,7 +17,7 @@ when @issue.status =="Open" then%>
       <a href="/issues/update_issue_status/<%= @issue.id %>?status=Closed">Close</a>
     </div>
   </div>
-<%when @issue.status =="closed"%>
+<%when @issue.status =="Closed"%>
    <div id="close_comment">
     <label>Closed</label>
   </div>

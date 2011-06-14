@@ -7,6 +7,10 @@
     <title>Issue Tracker: <%= controller.action_name %></title>
     <%= stylesheet_link_tag 'issue_tracker/my_style' %>
     <link rel="icon" href="/images/bugz.jpg"/>
+    <%= javascript_include_tag :all %>
+    <script type="text/javascript">
+      setTimeout("new Effect.Fade('flash_notice');",5000)
+    </script>
   </head>
   <body>
     <div id="header">

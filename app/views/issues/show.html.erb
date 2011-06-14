@@ -1,6 +1,6 @@
+        <a id="home" href="/issues/user_issues/<%= current_user.id %>">Home</a>
         <div class="writeboardtitle">
           <h3><%=h @issue.short_description %></h3>
-          <a id="home" href="/issues/user_issues/<%= current_user.id %>">Home</a>
           <br/><br/>
           <% if @user.login != current_user.login %>
               Assigned to <%=h @user.login%>
@@ -11,10 +11,12 @@
           <%if @issue.image.exists? %>
             <%= image_tag @issue.image.url(:medium) %>
           <%end%>
+          <% if !@issue.detailed_description.nil? %>
           <p>
             <%#= RedCloth.new(@issue.detailed_description).to_html %>
             <%= @issue.detailed_description.gsub("\n","<br/>") %>
           </p>
+          <% end %>
           <form action="/issues/reassign/<%= @issue.id %>" class="reassign" enctype="multipart/form-data" id="reassign" method="post">
             <p>
              <%# @users = User.find_all_by_user_id(2422,:order => 'login') %>
