@@ -1,5 +1,5 @@
-        <a id="home" href="/issues/user_issues/<%= current_user.id %>">Home</a>
         <div class="writeboardtitle">
+          <a id="home" href="/issues/user_issues/<%= current_user.id %>">Home</a>
           <h3><%=h @issue.short_description %></h3>
           <br/><br/>
           <% if @user.login != current_user.login %>

@@ -446,10 +446,20 @@ table{
     border:1px solid gray;
     color:#FFFFFF;
     padding: 5px 18px 5px 18px;
-    margin: 0px 6px 0px 1px;
+    margin: 0px 6px 8px 1px;
     text-align: center;
+    float:left;
 }
 #home
 {
     margin-left: 77px;
+}
+
+#bug_bug_cancel
+{
+    text-align: right;
+}
+.writeboardtitle a
+{
+    text-decoration: none;
 }

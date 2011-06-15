@@ -1,12 +1,12 @@
 <%= stylesheet_link_tag 'my_style' %>
 <%= stylesheet_link_tag 'new_bug' %>
 <h3>Add New</h3>
-  <ul class="nav_list_ul">
-     <li><a href="/issues/new">Bug</a></li>
-     <li><a id="new_feature" href="/issues/new_feature/<%= current_user.id%>"> Feature</a></li>
-     <li><a href="/issues/new_enhancement/<%= current_user.id%>">Enhancement</a></li>
-     <li><a href="/issues/new_task/<%= current_user.id%>">Task</a></li>
-     <li><a href="/issues/new_query/<%= current_user.id%>">Query</a></li>
+<ul class="nav_list_ul">
+  <li><a href="/issues/new">Bug</a></li>
+  <li><a id="new_feature" href="/issues/new_feature/<%= current_user.id%>"> Feature</a></li>
+  <li><a href="/issues/new_enhancement/<%= current_user.id%>">Enhancement</a></li>
+  <li><a href="/issues/new_task/<%= current_user.id%>">Task</a></li>
+  <li><a href="/issues/new_query/<%= current_user.id%>">Query</a></li>
 </ul>
 <div class="clearfix"></div>
 <form name="newissue" action="/issues/create" class="new_issue" enctype="multipart/form-data" id="new_issue" method="post">
@@ -38,7 +38,9 @@
   <div id="div_bug_cancel">
     <p>
       <input id="issue_submit" name="commit" type="submit" value="Add Feature" />
-      or <a id="bug_cancel" href="/issues/user_issues/<%= current_user.id%>">Cancel</a>
+    <div id="bug_bug_cancel">
+      <a id="bug_cancel" href="/issues/user_issues/<%= current_user.id%>">Cancel</a>
+    </div>
     </p>
   </div>
 

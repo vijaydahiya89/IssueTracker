@@ -1,7 +1,9 @@
 <%= stylesheet_link_tag 'my_style' %>
 <%= stylesheet_link_tag 'new_bug' %>
-<a id="home" href="/issues/user_issues/<%= current_user.id %>">Home</a>
+<div class="writeboardtitle">
 <h3>Edit issue</h3>
+<a id="home" href="/issues/user_issues/<%= current_user.id %>">Home</a>
+</div>
 <form action="/issues/update/<%=@issue.id%>" class="edit_issue" enctype="multipart/form-data" id="edit_issue_<% @issue.id %>" method="post">
   <p>
     Summary<br/>
@@ -52,7 +54,9 @@
   <div id="div_bug_cancel">
     <p>
       <input id="issue_submit" name="commit" type="submit" value="Update" />
-      or <a id="bug_cancel" href="/issues/destroy/<%= @issue.id%>">Destroy</a>
+       <div id="bug_bug_cancel">
+      <a id="bug_cancel" href="/issues/destroy/<%= @issue.id%>">Destroy</a>
+       </div>
     </p>
   </div>
 </form>
