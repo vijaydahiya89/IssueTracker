@@ -16,3 +16,8 @@
   <h3>Queries</h3>
   <%= render :partial => "queries"%>
 <%end%>
+  <% if !@assigned_by_me.empty? %>
+  <h3>Queries Assigned By Me</h3>
+  <%= render :partial => "assigned_by_me"%>
+<%end%>
+  <br/>

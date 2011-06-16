@@ -15,3 +15,9 @@
   <h3>Bugs</h3>
   <%= render :partial => "bugs"%>
 <%end%>
+
+  <% if !@assigned_by_me.empty? %>
+  <h3>Bugs Assigned By Me</h3>
+  <%= render :partial => "assigned_by_me"%>
+<%end%>
+  <br/>

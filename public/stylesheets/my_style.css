@@ -349,6 +349,7 @@ table{
     height:25px;
     /*    background-color: blue;*/
     float:right;
+    font-size: 16px;
 }
 #my_issues_title_bottom
 {
@@ -409,33 +410,33 @@ table{
     text-decoration: none;
     background-color:#E5E5E5;
     color:black;
-    padding: 10px 32px 10px 32px;
+    padding: 4px 32px 4px 32px;
     margin: 0px 0px 2px 10px;
     text-align: center;
 }
 #new_bug
 {
-    background-color:gray;
+    background-color: #333333;
     color:white;
 }
 #new_feature
 {
-    background-color:gray;
+    background-color: #333333;
     color:white;
 }
 #new_enhancement
 {
-    background-color:gray;
+    background-color: #333333;
     color:white;
 }
 #new_task
 {
-    background-color:gray;
+    background-color: #333333;
     color:white;
 }
 #new_query
 {
-    background-color:gray;
+    background-color: #333333;
     color:white;
 }
 #div_bug_cancel #issue_submit
@@ -462,4 +463,55 @@ table{
 .writeboardtitle a
 {
     text-decoration: none;
+}
+
+#issue_short_description
+{
+    width: 590px;
+}
+#issue_detailed_description
+{
+    width: 590px;
+}
+
+/*Style for show page*/
+#show_home
+{
+    margin-left: -77px;
+    margin-bottom: 4px;
+}
+#show_home a
+{
+    text-decoration: none;
+    text-align: left;
+}
+
+#reassign_issue
+{
+    float:right;
+}
+
+.show_short_description
+{
+    margin-top: 10px;
+    font-size: 16px;
+    border-bottom: 1px dotted #DDDDDD;
+    padding-bottom: 4px;
+    
+}
+
+.detailed_desciption
+{
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+#show_form
+{
+    font-size: 12px;
+}
+
+#assigned_by
+{
+    color: grey;
 }

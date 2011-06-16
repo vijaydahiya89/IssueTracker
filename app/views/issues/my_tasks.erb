@@ -16,3 +16,8 @@
   <h3>Tasks</h3>
   <%= render :partial => "tasks"%>
 <%end%>
+    <% if !@assigned_by_me.empty? %>
+  <h3>Tasks Assigned By Me</h3>
+  <%= render :partial => "assigned_by_me"%>
+<%end%>
+  <br/>

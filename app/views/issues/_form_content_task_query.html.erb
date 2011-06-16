@@ -1,0 +1,14 @@
+  <p>
+    Description<br/>
+    <textarea cols="58" id="issue_short_description" name="summary" rows="2"></textarea>
+  </p>
+  <p>
+    Assign to<br/>
+    <%  @users = User.all(:order => 'login')%>
+    <select name="issue[assigned_to]" style="width: 150px">
+      <% @users.each do |user| %>
+        <option value="<%= user.id%>"><%= user.login %></option>
+      <% end %>
+    </select>
+  </p>
+  <hr/>

@@ -9,26 +9,9 @@
   <li><a href="/issues/new_query/<%= current_user.id%>">Query</a></li>
 </ul>
 <div class="clearfix"></div>
-<form name="newissue" action="/issues/create" class="new_issue" enctype="multipart/form-data" id="new_issue" method="post">
-
-  <p>
-    Description<br/>
-    <textarea cols="58" id="issue_short_description" name="summary" rows="2"></textarea>
-  </p>
-
-  <p>
-    Assign to<br/>
-    <%  @users = User.all(:order => 'login')%>
-    <select name="issue[assigned_to]" style="width: 150px">
-      <% @users.each do |user| %>
-        <option value="<%= user.id%>"><%= user.login %></option>
-      <% end %>
-    </select>
-  </p>
-  <hr/>
-  <p>
-    <input type="hidden" name="issue[issue_type]" value="Task" />
-  </p>
+<form onsubmit="return validate_form('issue_short_description','Task description');" name="newissue" action="/issues/create" class="new_issue" enctype="multipart/form-data" id="new_issue" method="post">
+  <%= render :partial => 'form_content_task_query' %>
+  <input type="hidden" name="issue[issue_type]" value="Task" />
   <div id="div_bug_cancel">
     <p>
       <input id="issue_submit" name="commit" type="submit" value="Add Task" />

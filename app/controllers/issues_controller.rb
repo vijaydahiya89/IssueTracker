@@ -2,7 +2,9 @@ class IssuesController < ApplicationController
   before_filter :login_required
 
   def show
+
     @issue = Issue.find(params[:id])
+    @assigned_by = User.find_by_id(@issue.user_id)
     @user = User.find_by_id(@issue.assigned_to)
     @posts = Post.find_all_by_issue_id(params[:id])
     if params[:from] != "posts"
@@ -79,6 +81,7 @@ class IssuesController < ApplicationController
     @enhancements = Issue.find_all_by_assigned_to_and_issue_type(current_user.id,"Enhancement",:order => "id DESC")
     @tasks = Issue.find_all_by_assigned_to_and_issue_type(current_user.id,"Task",:order => "id DESC")
     @queries = Issue.find_all_by_assigned_to_and_issue_type(current_user.id,"Query",:order => "id DESC")
+    @assigned_by_me = Issue.find_all_by_user_id(current_user.id,:order=>"id DESC")
 
     @open_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Bug","Open",:order => "id DESC")
     @fixed_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Bug","Fixed",:order => "id DESC")
@@ -108,6 +111,7 @@ class IssuesController < ApplicationController
     @fixed_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Bug","Fixed",:order => "id DESC")
     @tested_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Bug","Tested",:order => "id DESC")
     @closed_bugs = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Bug","Closed",:order => "id DESC")
+    @assigned_by_me = Issue.find_all_by_user_id_and_issue_type(current_user.id,"Bug",:order => "id DESC")
   end
 
   def my_features
@@ -116,6 +120,7 @@ class IssuesController < ApplicationController
     @devdone_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Feature","Devdone",:order => "id DESC")
     @tested_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Feature","Tested",:order => "id DESC")
     @closed_features = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Feature","Closed",:order => "id DESC")
+    @assigned_by_me = Issue.find_all_by_user_id_and_issue_type(current_user.id,"Feature",:order => "id DESC")
   end
 
   def my_enhancements
@@ -124,20 +129,22 @@ class IssuesController < ApplicationController
     @devdone_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Enhancement","Devdone",:order => "id DESC")
     @tested_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Enhancement","Tested",:order => "id DESC")
     @closed_enhancements = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Enhancement","Closed",:order => "id DESC")
+    @assigned_by_me = Issue.find_all_by_user_id_and_issue_type(current_user.id,"Enhancement",:order => "id DESC")
   end
 
   def my_tasks
     @tasks = Issue.find_all_by_assigned_to_and_issue_type(current_user.id,"Task",:order => "id DESC")
     @open_tasks = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Task","Open",:order => "id DESC")
     @done_tasks = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Task","Done",:order => "id DESC")
+    @assigned_by_me = Issue.find_all_by_user_id_and_issue_type(current_user.id,"Task",:order => "id DESC")
   end
 
   def my_queries
     @queries = Issue.find_all_by_assigned_to_and_issue_type(current_user.id,"Query",:order => "id DESC")
     @open_queries = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Query","Open",:order => "id DESC")
     @answered_queries = Issue.find_all_by_assigned_to_and_issue_type_and_status(current_user.id,"Query","Answered",:order => "id DESC")
+   @assigned_by_me = Issue.find_all_by_user_id_and_issue_type(current_user.id,"Query",:order => "id DESC")
   end
-
   def user_issues
 #    @users = User.find_all_by_user_id(2422,:order => 'login')   # on staging
     @users = User.all(:order => 'login')
