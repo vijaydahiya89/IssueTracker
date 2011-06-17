@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'my_style' %>
+<div id="div_login">
 <form action="/session" method="post">
   <label for="login">Login</label><br/>
   <input id="login" name="login" type="text" />
@@ -15,4 +17,8 @@
 <br/>
 <div id="flash_notice">
   <%= flash[:notice] %>
+</div>
+</div>
+<div id="login_image">
+  <img src="/images/download.jpg"/>
 </div>

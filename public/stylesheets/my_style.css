@@ -515,3 +515,14 @@ table{
 {
     color: grey;
 }
+
+#div_login
+{
+ width: 370px;
+ border-right: 1px dotted #DDDDDD;
+ float: left;
+}
+#login_image img
+{
+    margin: 9px 20px 0px 85px;
+}
