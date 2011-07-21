@@ -1,5 +1,5 @@
 <form action="/users/create" method="post">
-<p><label for="login">Login</label><br/>
+<p><label for="login">Name</label><br/>
 <input id="user_login" name="user[login]" size="30" type="text" /></p>
 <p><label for="email">Email</label><br/>
 <input id="user_email" name="user[email]" size="30" type="text" /></p>
@@ -11,7 +11,8 @@
   &nbsp;<a href="/login">Cancel</a>
 </p>
 </form>
-<br/>
+<% if !flash[:notice].nil? %>
 <div id="flash_notice">
   <%= flash[:notice] %>
 </div>
+<%end%>

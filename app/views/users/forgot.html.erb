@@ -11,7 +11,8 @@
     <a href="/login">Cancel</a>
   </p>
 </form>
-<br/>
+<% if !flash[:notice].nil? %>
 <div id="flash_notice">
-<%= flash[:notice] %>
+  <%= flash[:notice] %>
 </div>
+<% end %>

@@ -4,7 +4,6 @@
 <div id="show_form">
 <form action="/issues/reassign/<%= @issue.id %>" class="reassign" enctype="multipart/form-data" id="reassign" method="post">
      <b><%=h @issue.issue_type%></b>  Assigned to
-     <%# @users = User.find_all_by_user_id(2422,:order => 'login') %>
       <% @users = User.all(:order => 'login') %>
       <select name="issue[assigned_to]">
         <% @users.each do |user| %>
@@ -24,8 +23,7 @@
   <%end%>
   <% if !@issue.detailed_description.nil? %>
     <p>
-  <%#= RedCloth.new(@issue.detailed_description).to_html %>
-      <%= @issue.detailed_description.gsub("\n","<br/>") %>
+     <%= RedCloth.new(@issue.detailed_description).to_html %>
     </p>
   <% end %>
 </div>
@@ -45,8 +43,7 @@
               <td>
                 <label title="<%= post.id %>"><%= user.login %></label>
                 <p>
-    <%#= RedCloth.new(post.message).to_html %>
-                  <%= post.message.gsub("\n","<br/>") %>
+		<%= RedCloth.new(post.message).to_html %>
                 </p>
               </td>
             </tr>

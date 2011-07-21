@@ -3,7 +3,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <% if controller.action_name != "new" and
+              controller.action_name != "new_feature" and
+              controller.action_name != "new_enhancement" and
+              controller.action_name != "new_task" and
+              controller.action_name != "new_query" and
+              controller.action_name != "show" %>
+	   <meta http-equiv="refresh" content="60" />
+        <%else%>
+	   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <% end %>
     <title>Issue Tracker: <%= controller.action_name %></title>
     <%= stylesheet_link_tag 'my_style' %>
     <%= javascript_include_tag :all %>

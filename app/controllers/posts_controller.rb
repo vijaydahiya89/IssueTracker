@@ -6,14 +6,19 @@ class PostsController < ApplicationController
     flag = 0
     if @posts.empty?
       if current_user.id == @issue.user_id
-        merged_description = @issue.detailed_description + "\n\n" + params[:message]
-        @issue.update_attribute(:detailed_description, merged_description)
+        if (@issue.issue_type == "Query") or (@issue.issue_type =="Task")
+          merged_description = @issue.short_description + "\n" + params[:message]
+          @issue.update_attribute(:short_description, merged_description)
+        else
+         merged_description = @issue.detailed_description + "\n" + params[:message]
+         @issue.update_attribute(:detailed_description, merged_description)
+        end
       else
         flag = 1
       end
     else
       if current_user.id == @posts.last.user_id
-        merged_comment = @posts.last.message + "\n\n" + params[:message]
+        merged_comment = @posts.last.message + "\n" + params[:message]
         @posts.last.update_attribute(:message, merged_comment)
       else
         flag = 1

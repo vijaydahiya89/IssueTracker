@@ -35,7 +35,7 @@ class UserMailer < ActionMailer::Base
     @subject += "BUGZ: A new issue has been assigned to you"
     @from = "team@lionsher.com"
 #    @body[:url] = "http://bugz.kernlearning.com/issues/show/#{@issue.id}"  # on staging
-    @body[:url] = "http://localhost:3000/issues/show/#{@issue.id}"
+    @body[:url] = "http://#{SITE_URL}/issues/show/#{@issue.id}"
     content_type "text/html"
   end
 
@@ -49,7 +49,7 @@ class UserMailer < ActionMailer::Base
     @subject += "BUGZ: A new comment has been posted"
     @from = "team@lionsher.com"
 #    @body[:url] = "http://bugz.kernlearning.com/issues/show/#{@issue.id}"  # on staging
-    @body[:url] = "http://localhost:3000/issues/show/#{@issue.id}"
+    @body[:url] = "http:///#{SITE_URL}/issues/show/#{@issue.id}"
     content_type "text/html"
   end
 
@@ -62,7 +62,7 @@ class UserMailer < ActionMailer::Base
     @subject += "BUGZ: Issue status has been updated"
     @from = "team@lionsher.com"
 #    @body[:url] = "http://bugz.kernlearning.com/issues/show/#{@issue.id}"  # on staging
-    @body[:url] = "http://localhost:3000/issues/show/#{@issue.id}"
+    @body[:url] = "http://#{SITE_URL}/issues/show/#{@issue.id}"
     content_type "text/html"
   end
 

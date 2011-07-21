@@ -1,8 +1,8 @@
+require 'redcloth'
 class IssuesController < ApplicationController
   before_filter :login_required
 
   def show
-
     @issue = Issue.find(params[:id])
     @assigned_by = User.find_by_id(@issue.user_id)
     @user = User.find_by_id(@issue.assigned_to)
@@ -70,6 +70,10 @@ class IssuesController < ApplicationController
     @visits = Visit.find_all_by_issue_id(params[:id])
     @visits.each do |visit|
       visit.destroy
+    end
+    @posts = Post.find_all_by_issue_id(params[:id])
+    @posts.each do |post|
+      post.destroy
     end
     redirect_to("/issues/user_issues/#{current_user.id}")
   end

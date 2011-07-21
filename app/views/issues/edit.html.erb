@@ -11,7 +11,7 @@
   </p>
   <p>
     <label for="issue_detailed_description">Detailed description</label><br />
-    <textarea cols="58" id="issue_detailed_description" name="issue[detailed_description]" rows="10" value="<%= @issue.detailed_description %>"></textarea>
+    <textarea cols="58" id="issue_detailed_description" name="issue[detailed_description]" rows="10"><%=h @issue.detailed_description %></textarea>
   </p>
   <p>
     Issue Type:
